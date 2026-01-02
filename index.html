@@ -1,0 +1,1272 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Richard Madden - vCard Digital</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #7da0fa;
+            --primary-light: #8f9df8;
+            --primary-dark: #566487;
+            --secondary: #8f9df8;
+            --accent: #e684ae;
+            --text-dark: #566487;
+            --text-light: #8a96b3;
+            --bg-light: #eef2f9;
+            --bg-dark: #eef2f9;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #eef2f9 0%, #f5f7fb 100%);
+            min-height: 100vh;
+            padding: 0;
+            margin: 0;
+        }
+
+        .vcard-container {
+            max-width: 480px;
+            margin: 0 auto;
+            background: #eef2f9;
+            box-shadow: 20px 20px 40px #d1d9e6, -20px -20px 40px #ffffff;
+        }
+
+        /* HEADER CON IMAGEN DE FONDO MÉDICA */
+        .header-image {
+            position: relative;
+            height: 180px;
+            background-image: 
+                linear-gradient(135deg, rgba(10, 147, 150, 0.88) 0%, rgba(6, 182, 212, 0.88) 100%),
+                url('https://images.pexels.com/photos/4173239/pexels-photo-4173239.jpeg?auto=compress&cs=tinysrgb&w=800');
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* PERFIL CON FONDO SUTIL */
+        .profile-section {
+            position: relative;
+            text-align: center;
+            padding: 0 20px 30px;
+            margin-top: -80px;
+            background: #eef2f9;
+        }
+
+        .profile-photo {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            background-image: url('https://images.pexels.com/photos/5215024/pexels-photo-5215024.jpeg?auto=compress&cs=tinysrgb&w=300');
+            background-size: cover;
+            background-position: center;
+            border: 5px solid var(--bg-dark);
+            box-shadow: 12px 12px 24px #d1d9e6, -12px -12px 24px #ffffff;
+            overflow: hidden;
+        }
+
+        .profile-name {
+            font-size: 28px;
+            font-weight: 700;
+            color: #566487;
+            margin-bottom: 8px;
+            text-shadow: none;
+        }
+
+        .profile-title {
+            font-size: 16px;
+            color: var(--primary-light);
+            margin-bottom: 15px;
+            font-weight: 500;
+            text-shadow: none;
+        }
+
+        .profile-description {
+            font-size: 14px;
+            color: #8a96b3;
+            line-height: 1.6;
+            padding: 0 10px;
+            margin-bottom: 25px;
+            text-shadow: none;
+        }
+
+        .quick-contact {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .quick-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(10, 147, 150, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-light);
+            font-size: 20px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+            backdrop-filter: blur(10px);
+        }
+
+        .quick-icon:hover {
+            background: var(--primary);
+            color: #566487;
+            transform: translateY(-5px);
+        }
+
+        /* SECCIONES CON FONDOS MÉDICOS */
+        .section {
+            padding: 30px 20px;
+            position: relative;
+            background: #eef2f9;
+            border-radius: 0;
+            box-shadow: inset 0 4px 8px rgba(209, 217, 230, 0.3);
+        }
+
+        .section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(238, 242, 249, 0.95);
+            z-index: 0;
+        }
+
+        .section > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* CONTACT SECTION CON FONDO */
+        .section-contact {
+            background-image: url('https://images.pexels.com/photos/7108344/pexels-photo-7108344.jpeg?auto=compress&cs=tinysrgb&w=800');
+        }
+
+        /* SERVICES SECTION CON FONDO */
+        .section-services {
+            background-image: url('https://images.pexels.com/photos/4386464/pexels-photo-4386464.jpeg?auto=compress&cs=tinysrgb&w=800');
+        }
+
+        /* GALLERY SECTION CON FONDO */
+        .section-gallery {
+            background-image: url('https://images.pexels.com/photos/3768894/pexels-photo-3768894.jpeg?auto=compress&cs=tinysrgb&w=800');
+        }
+
+        /* PRODUCTS SECTION CON FONDO */
+        .section-products {
+            background-image: url('https://images.pexels.com/photos/3768722/pexels-photo-3768722.jpeg?auto=compress&cs=tinysrgb&w=800');
+        }
+
+        /* TESTIMONIALS SECTION CON FONDO */
+        .section-testimonials {
+            background-image: url('https://images.pexels.com/photos/7108344/pexels-photo-7108344.jpeg?auto=compress&cs=tinysrgb&w=800');
+        }
+
+        /* BLOG SECTION CON FONDO */
+        .section-blog {
+            background-image: url('https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=800');
+        }
+
+        /* HOURS SECTION CON FONDO */
+        .section-hours {
+            background-image: url('https://images.pexels.com/photos/4173239/pexels-photo-4173239.jpeg?auto=compress&cs=tinysrgb&w=800');
+        }
+
+        /* SOCIAL SECTION CON FONDO */
+        .section-social {
+            background-image: url('https://images.pexels.com/photos/7108344/pexels-photo-7108344.jpeg?auto=compress&cs=tinysrgb&w=800');
+        }
+
+        /* FORM SECTION CON FONDO */
+        .section-form {
+            background-image: url('https://images.pexels.com/photos/4386464/pexels-photo-4386464.jpeg?auto=compress&cs=tinysrgb&w=800');
+        }
+
+        /* MAP SECTION CON FONDO */
+        .section-map {
+            background-image: url('https://images.pexels.com/photos/3768894/pexels-photo-3768894.jpeg?auto=compress&cs=tinysrgb&w=800');
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+            font-weight: 700;
+            color: #566487;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            text-shadow: none;
+        }
+
+        .section-title i {
+            color: var(--primary-light);
+            font-size: 18px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+            padding: 15px;
+            background: #eef2f9;
+            border-radius: 16px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            box-shadow: 6px 6px 12px #d1d9e6, -6px -6px 12px #ffffff;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 10px 10px 20px #d1d9e6, -10px -10px 20px #ffffff;
+        }
+
+        .contact-icon {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, #7da0fa 0%, #8f9df8 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #566487;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+
+        .contact-info {
+            flex: 1;
+        }
+
+        .contact-label {
+            font-size: 11px;
+            color: #8a96b3;
+            text-transform: uppercase;
+            margin-bottom: 3px;
+        }
+
+        .contact-value {
+            font-size: 15px;
+            color: #566487;
+            font-weight: 500;
+        }
+
+        /* BOTÓN GUARDAR CONTACTO CON FONDO */
+        .save-contact-section {
+            padding: 20px;
+            text-align: center;
+            background: #eef2f9;
+        }
+
+        .save-contact-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            width: 100%;
+            max-width: 400px;
+            padding: 18px 40px;
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
+            color: #566487;
+            font-size: 18px;
+            font-weight: 700;
+            text-transform: uppercase;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
+            transition: all 0.3s ease;
+            letter-spacing: 1px;
+        }
+
+        .save-contact-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(16, 185, 129, 0.5);
+        }
+
+        .save-contact-btn i {
+            font-size: 24px;
+        }
+
+        /* QR SECTION CON FONDO */
+        .qr-section {
+            padding: 40px 20px;
+            text-align: center;
+            background: #eef2f9;
+        }
+
+        .qr-code-container {
+            max-width: 280px;
+            margin: 0 auto;
+            padding: 25px;
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 12px 12px 24px #d1d9e6, -12px -12px 24px #ffffff;
+        }
+
+        .qr-code {
+            width: 100%;
+            height: 230px;
+            background: linear-gradient(135deg, #f0f0f0 0%, #e0e0e0 100%);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+
+        .qr-code i {
+            font-size: 120px;
+            color: var(--primary);
+        }
+
+        .qr-text {
+            font-size: 13px;
+            color: var(--text-dark);
+            line-height: 1.5;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .service-card {
+            background: #eef2f9;
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            box-shadow: 8px 8px 16px #d1d9e6, -8px -8px 16px #ffffff;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 12px 12px 24px #d1d9e6, -12px -12px 24px #ffffff;
+        }
+
+        .service-image {
+            width: 100%;
+            height: 120px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .service-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(10, 147, 150, 0.7) 0%, rgba(6, 182, 212, 0.7) 100%);
+        }
+
+        .service-content {
+            padding: 15px;
+        }
+
+        .service-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: #566487;
+            margin-bottom: 8px;
+        }
+
+        .service-description {
+            font-size: 12px;
+            color: #8a96b3;
+            line-height: 1.5;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-top: 10px;
+        }
+
+        .gallery-item {
+            height: 140px;
+            border-radius: 12px;
+            overflow: hidden;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        .gallery-item::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(10, 147, 150, 0.3) 0%, rgba(6, 182, 212, 0.3) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-item:hover::after {
+            opacity: 1;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .product-card {
+            background: #eef2f9;
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 8px 8px 16px #d1d9e6, -8px -8px 16px #ffffff;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 10px 10px 20px #d1d9e6, -10px -10px 20px #ffffff;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 130px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .product-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(10, 147, 150, 0.6) 0%, rgba(6, 182, 212, 0.6) 100%);
+        }
+
+        .product-info {
+            padding: 15px;
+        }
+
+        .product-name {
+            font-size: 14px;
+            font-weight: 700;
+            color: #566487;
+            margin-bottom: 5px;
+        }
+
+        .product-price {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--secondary);
+        }
+
+        .testimonial-card {
+            background: #eef2f9;
+            padding: 25px;
+            border-radius: 20px;
+            margin-top: 10px;
+            position: relative;
+            box-shadow: inset 6px 6px 12px #d1d9e6, inset -6px -6px 12px #ffffff;
+        }
+
+        .quote-icon {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            font-size: 40px;
+            color: rgba(10, 147, 150, 0.3);
+        }
+
+        .testimonial-photo-small {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            background-size: cover;
+            background-position: center;
+            border: 3px solid var(--primary);
+        }
+
+        .testimonial-text {
+            font-size: 14px;
+            color: #8a96b3;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            font-size: 15px;
+            font-weight: 700;
+            color: #566487;
+            margin-bottom: 5px;
+        }
+
+        .testimonial-role {
+            font-size: 13px;
+            color: var(--primary-light);
+        }
+
+        .testimonial-stars {
+            margin-top: 10px;
+            color: var(--accent);
+        }
+
+        .blog-card {
+            background: #eef2f9;
+            border-radius: 20px;
+            overflow: hidden;
+            margin-top: 10px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            box-shadow: 8px 8px 16px #d1d9e6, -8px -8px 16px #ffffff;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 12px 12px 24px #d1d9e6, -12px -12px 24px #ffffff;
+        }
+
+        .blog-image {
+            width: 100%;
+            height: 160px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .blog-content {
+            padding: 20px;
+        }
+
+        .blog-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #566487;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        .blog-excerpt {
+            font-size: 13px;
+            color: #8a96b3;
+            line-height: 1.5;
+            margin-bottom: 10px;
+        }
+
+        .blog-link {
+            display: inline-block;
+            color: var(--primary-light);
+            font-size: 13px;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .blog-link:hover {
+            color: var(--secondary);
+        }
+
+        .hours-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .hour-item {
+            background: #eef2f9;
+            padding: 15px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 8px;
+            box-shadow: inset 4px 4px 8px #d1d9e6, inset -4px -4px 8px #ffffff;
+        }
+
+        .hour-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #7da0fa 0%, #8f9df8 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #566487;
+            font-size: 16px;
+        }
+
+        .hour-info {
+            flex: 1;
+        }
+
+        .hour-day {
+            font-size: 13px;
+            font-weight: 700;
+            color: #566487;
+            margin-bottom: 3px;
+        }
+
+        .hour-time {
+            font-size: 11px;
+            color: #8a96b3;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 13px;
+            color: #566487;
+            margin-bottom: 8px;
+            font-weight: 600;
+            text-shadow: none;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px;
+            background: rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.25);
+            border-radius: 10px;
+            color: #566487;
+            font-size: 14px;
+            font-family: inherit;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: #8a96b3;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #7da0fa 0%, #8f9df8 100%);
+            color: #566487;
+            border: none;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 700;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(10, 147, 150, 0.5);
+        }
+
+        .map-container {
+            width: 100%;
+            height: 200px;
+            background: #ddd;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .social-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            color: #566487;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-btn:hover {
+            transform: translateY(-5px) scale(1.1);
+        }
+
+        .social-btn.linkedin {
+            background: #0077B5;
+        }
+
+        .social-btn.facebook {
+            background: #1877F2;
+        }
+
+        .social-btn.instagram {
+            background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+        }
+
+        .social-btn.twitter {
+            background: #1DA1F2;
+        }
+
+        .social-btn.whatsapp {
+            background: #25D366;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 480px) {
+            .profile-photo {
+                width: 140px;
+                height: 140px;
+            }
+
+            .services-grid,
+            .products-grid,
+            .gallery-grid,
+            .hours-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .save-contact-btn {
+                font-size: 16px;
+                padding: 16px 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="vcard-container">
+        <!-- HEADER CON IMAGEN MÉDICA -->
+        <div class="header-image"></div>
+
+        <!-- PERFIL CON FONDO -->
+        <div class="profile-section">
+            <div class="profile-photo"></div>
+
+            <!-- LÍNEA 756: Cambia el nombre del médico -->
+            <div class="profile-name">Dr. Richard Madden</div>
+
+            <!-- LÍNEA 759: Cambia la especialidad -->
+            <div class="profile-title">Medicina Deportiva & Nutrición</div>
+
+            <!-- LÍNEAS 762-764: Cambia la descripción -->
+            <div class="profile-description">
+                Médico deportivo certificado con más de 10 años de experiencia. Especializado en medicina deportiva, nutrición clínica y optimización del rendimiento atlético.
+            </div>
+
+            <div class="quick-contact">
+                <!-- LÍNEAS 769-785: Cambia tus datos de contacto -->
+                <a href="tel:+593999999999" class="quick-icon">
+                    <i class="fas fa-phone"></i>
+                </a>
+                <a href="mailto:dr.madden@clinica.com" class="quick-icon">
+                    <i class="fas fa-envelope"></i>
+                </a>
+                <a href="https://wa.me/593999999999" class="quick-icon" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+                <a href="https://www.clinicamadden.com" class="quick-icon" target="_blank">
+                    <i class="fas fa-globe"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- SECCIÓN CONTACT CON FONDO -->
+        <div class="section section-contact">
+            <div class="section-title">
+                <i class="fas fa-address-card"></i>
+                Contact
+            </div>
+
+            <!-- LÍNEAS 796-880: Cambia la información de contacto -->
+            <a href="tel:+593999999999" class="contact-item">
+                <div class="contact-icon">
+                    <i class="fas fa-phone"></i>
+                </div>
+                <div class="contact-info">
+                    <div class="contact-label">Teléfono</div>
+                    <div class="contact-value">+593 999 999 999</div>
+                </div>
+            </a>
+
+            <a href="mailto:dr.madden@clinica.com" class="contact-item">
+                <div class="contact-icon">
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <div class="contact-info">
+                    <div class="contact-label">Email</div>
+                    <div class="contact-value">dr.madden@clinica.com</div>
+                </div>
+            </a>
+
+            <div class="contact-item">
+                <div class="contact-icon">
+                    <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <div class="contact-info">
+                    <div class="contact-label">Dirección</div>
+                    <div class="contact-value">Av. Medicina 123, Ibarra</div>
+                </div>
+            </div>
+
+            <a href="https://www.clinicamadden.com" class="contact-item" target="_blank">
+                <div class="contact-icon">
+                    <i class="fas fa-globe"></i>
+                </div>
+                <div class="contact-info">
+                    <div class="contact-label">Sitio Web</div>
+                    <div class="contact-value">www.clinicamadden.com</div>
+                </div>
+            </a>
+        </div>
+
+        <!-- BOTÓN GUARDAR CONTACTO CON FONDO -->
+        <div class="save-contact-section">
+            <button class="save-contact-btn" onclick="saveContact()">
+                <i class="fas fa-user-plus"></i>
+                Guardar Contacto
+            </button>
+        </div>
+
+        <!-- QR CODE CON FONDO -->
+        <div class="qr-section">
+            <div class="section-title" style="justify-content: center;">
+                <i class="fas fa-qrcode"></i>
+                QR Code
+            </div>
+
+            <div class="qr-code-container">
+                <div class="qr-code">
+                    <!-- LÍNEA 875: Reemplaza con tu código QR real -->
+                    <i class="fas fa-qrcode"></i>
+                </div>
+                <div class="qr-text">
+                    Escanea este código QR para guardar mi contacto en tu teléfono
+                </div>
+            </div>
+        </div>
+
+        <!-- SERVICIOS CON FONDO -->
+        <div class="section section-services">
+            <div class="section-title">
+                <i class="fas fa-stethoscope"></i>
+                Nuestros Servicios
+            </div>
+
+            <div class="services-grid">
+                <!-- LÍNEAS 890-923: Personaliza tus servicios médicos -->
+                <div class="service-card">
+                    <div class="service-image" style="background-image: url('https://images.pexels.com/photos/4386464/pexels-photo-4386464.jpeg?auto=compress&cs=tinysrgb&w=400');"></div>
+                    <div class="service-content">
+                        <div class="service-title">Medicina Deportiva</div>
+                        <div class="service-description">Evaluación y prevención de lesiones deportivas</div>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-image" style="background-image: url('https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=400');"></div>
+                    <div class="service-content">
+                        <div class="service-title">Nutrición Clínica</div>
+                        <div class="service-description">Plans alimenticios personalizados</div>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-image" style="background-image: url('https://images.pexels.com/photos/3768894/pexels-photo-3768894.jpeg?auto=compress&cs=tinysrgb&w=400');"></div>
+                    <div class="service-content">
+                        <div class="service-title">Fisioterapia</div>
+                        <div class="service-description">Recuperación y rehabilitación física</div>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-image" style="background-image: url('https://images.pexels.com/photos/7108344/pexels-photo-7108344.jpeg?auto=compress&cs=tinysrgb&w=400');"></div>
+                    <div class="service-content">
+                        <div class="service-title">Chequeo Médico</div>
+                        <div class="service-description">Evaluación médica completa</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- GALERÍA CON FONDO -->
+        <div class="section section-gallery">
+            <div class="section-title">
+                <i class="fas fa-images"></i>
+                Gallery
+            </div>
+
+            <div class="gallery-grid">
+                <!-- LÍNEAS 940-953: Imágenes de tu consultorio -->
+                <div class="gallery-item" style="background-image: url('https://images.pexels.com/photos/7108344/pexels-photo-7108344.jpeg?auto=compress&cs=tinysrgb&w=500');"></div>
+
+                <div class="gallery-item" style="background-image: url('https://images.pexels.com/photos/4386464/pexels-photo-4386464.jpeg?auto=compress&cs=tinysrgb&w=500');"></div>
+
+                <div class="gallery-item" style="background-image: url('https://images.pexels.com/photos/3768894/pexels-photo-3768894.jpeg?auto=compress&cs=tinysrgb&w=500');"></div>
+
+                <div class="gallery-item" style="background-image: url('https://images.pexels.com/photos/4173239/pexels-photo-4173239.jpeg?auto=compress&cs=tinysrgb&w=500');"></div>
+            </div>
+        </div>
+
+        <!-- PRODUCTOS CON FONDO -->
+        <div class="section section-products">
+            <div class="section-title">
+                <i class="fas fa-box-open"></i>
+                Products
+            </div>
+
+            <div class="products-grid">
+                <!-- LÍNEAS 965-988: Personaliza tus paquetes -->
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('https://images.pexels.com/photos/3768722/pexels-photo-3768722.jpeg?auto=compress&cs=tinysrgb&w=400');"></div>
+                    <div class="product-info">
+                        <div class="product-name">Chequeo Completo</div>
+                        <div class="product-price">$150</div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('https://images.pexels.com/photos/4173239/pexels-photo-4173239.jpeg?auto=compress&cs=tinysrgb&w=400');"></div>
+                    <div class="product-info">
+                        <div class="product-name">Plan Nutricional</div>
+                        <div class="product-price">$89</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TESTIMONIOS CON FONDO -->
+        <div class="section section-testimonials">
+            <div class="section-title">
+                <i class="fas fa-quote-left"></i>
+                Testimonials
+            </div>
+
+            <div class="testimonial-card">
+                <i class="fas fa-quote-left quote-icon"></i>
+                <div class="testimonial-photo-small" style="background-image: url('https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=150');"></div>
+
+                <!-- LÍNEAS 1004-1008: Cambia el testimonio -->
+                <div class="testimonial-text">
+                    "El Dr. Madden cambió mi vida. Su enfoque integral me ayudó a recuperarme de una lesión que otros médicos dijeron que era irreversible. Altamente recomendado."
+                </div>
+                <div class="testimonial-author">John Smith</div>
+                <div class="testimonial-role">Maratonista</div>
+                <div class="testimonial-stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- BLOG CON FONDO -->
+        <div class="section section-blog">
+            <div class="section-title">
+                <i class="fas fa-blog"></i>
+                Blog
+            </div>
+
+            <div class="blog-card">
+                <div class="blog-image" style="background-image: url('https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=600');"></div>
+                <div class="blog-content">
+                    <!-- LÍNEAS 1033-1038: Cambia el contenido del blog -->
+                    <div class="blog-title">Cómo prevenir lesiones deportivas: Guía completa</div>
+                    <div class="blog-excerpt">
+                        Descubre las técnicas más efectivas para prevenir lesiones durante tu entrenamiento y mejorar tu rendimiento deportivo...
+                    </div>
+                    <a href="#" class="blog-link">Leer más →</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- HORARIOS CON FONDO -->
+        <div class="section section-hours">
+            <div class="section-title">
+                <i class="fas fa-clock"></i>
+                Business Hours
+            </div>
+
+            <div class="hours-grid">
+                <!-- LÍNEAS 1051-1117: Cambia tus horarios -->
+                <div class="hour-item">
+                    <div class="hour-icon">
+                        <i class="fas fa-sun"></i>
+                    </div>
+                    <div class="hour-info">
+                        <div class="hour-day">Lunes</div>
+                        <div class="hour-time">09:00 - 20:00</div>
+                    </div>
+                </div>
+
+                <div class="hour-item">
+                    <div class="hour-icon">
+                        <i class="fas fa-sun"></i>
+                    </div>
+                    <div class="hour-info">
+                        <div class="hour-day">Martes</div>
+                        <div class="hour-time">09:00 - 20:00</div>
+                    </div>
+                </div>
+
+                <div class="hour-item">
+                    <div class="hour-icon">
+                        <i class="fas fa-sun"></i>
+                    </div>
+                    <div class="hour-info">
+                        <div class="hour-day">Miércoles</div>
+                        <div class="hour-time">09:00 - 20:00</div>
+                    </div>
+                </div>
+
+                <div class="hour-item">
+                    <div class="hour-icon">
+                        <i class="fas fa-sun"></i>
+                    </div>
+                    <div class="hour-info">
+                        <div class="hour-day">Jueves</div>
+                        <div class="hour-time">09:00 - 20:00</div>
+                    </div>
+                </div>
+
+                <div class="hour-item">
+                    <div class="hour-icon">
+                        <i class="fas fa-sun"></i>
+                    </div>
+                    <div class="hour-info">
+                        <div class="hour-day">Viernes</div>
+                        <div class="hour-time">09:00 - 20:00</div>
+                    </div>
+                </div>
+
+                <div class="hour-item">
+                    <div class="hour-icon">
+                        <i class="fas fa-moon"></i>
+                    </div>
+                    <div class="hour-info">
+                        <div class="hour-day">Sábado</div>
+                        <div class="hour-time">10:00 - 14:00</div>
+                    </div>
+                </div>
+
+                <div class="hour-item">
+                    <div class="hour-icon">
+                        <i class="fas fa-times"></i>
+                    </div>
+                    <div class="hour-info">
+                        <div class="hour-day">Domingo</div>
+                        <div class="hour-time">Cerrado</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- REDES SOCIALES CON FONDO -->
+        <div class="section section-social">
+            <div class="section-title">
+                <i class="fas fa-share-alt"></i>
+                Social Media
+            </div>
+
+            <div class="social-links">
+                <!-- LÍNEAS 1132-1157: Cambia tus enlaces -->
+                <a href="https://www.linkedin.com/in/dr-madden" class="social-btn linkedin" target="_blank">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+
+                <a href="https://www.facebook.com/drmadden" class="social-btn facebook" target="_blank">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+
+                <a href="https://www.instagram.com/drmadden" class="social-btn instagram" target="_blank">
+                    <i class="fab fa-instagram"></i>
+                </a>
+
+                <a href="https://twitter.com/drmadden" class="social-btn twitter" target="_blank">
+                    <i class="fab fa-twitter"></i>
+                </a>
+
+                <a href="https://wa.me/593999999999" class="social-btn whatsapp" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- FORMULARIO CON FONDO -->
+        <div class="section section-form">
+            <div class="section-title">
+                <i class="fas fa-paper-plane"></i>
+                Make an Appointment
+            </div>
+
+            <form onsubmit="handleSubmit(event)">
+                <!-- LÍNEAS 1169-1194: Formulario funcional -->
+                <div class="form-group">
+                    <label for="name">Nombre Completo *</label>
+                    <input type="text" id="name" name="name" required placeholder="Tu nombre">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email *</label>
+                    <input type="email" id="email" name="email" required placeholder="tu@email.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Teléfono *</label>
+                    <input type="tel" id="phone" name="phone" required placeholder="+593 99 999 9999">
+                </div>
+
+                <div class="form-group">
+                    <label for="service">Servicio de Interés</label>
+                    <select id="service" name="service">
+                        <option value="">Selecciona un servicio</option>
+                        <option value="medicina-deportiva">Medicina Deportiva</option>
+                        <option value="nutricion">Nutrición Clínica</option>
+                        <option value="fisioterapia">Fisioterapia</option>
+                        <option value="chequeo">Chequeo Médico</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Mensaje *</label>
+                    <textarea id="message" name="message" required placeholder="Cuéntanos qué necesitas..."></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">Enviar Solicitud</button>
+            </form>
+        </div>
+
+        <!-- MAPA CON FONDO -->
+        <div class="section section-map">
+            <div class="section-title">
+                <i class="fas fa-map-marked-alt"></i>
+                Encuéntranos
+            </div>
+
+            <div class="map-container">
+                <!-- LÍNEA 1220: Integra Google Maps -->
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.815598771234!2d-78.1234!3d0.35!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMMKwMjEnMDAuMCJOIDc4wrAwNyczNi4wIlc!5e0!3m2!1ses!2sec!4v1234567890"
+                    width="100%"
+                    height="200"
+                    style="border:0;"
+                    allowfullscreen=""
+                    loading="lazy">
+                </iframe>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // FUNCIÓN PARA GUARDAR CONTACTO
+        // LÍNEAS 1237-1265: Actualiza con tus datos
+        function saveContact() {
+            const vcard = `BEGIN:VCARD
+VERSION:3.0
+FN:Dr. Richard Madden
+N:Madden;Richard;;Dr.;
+ORG:Clínica Médica Deportiva
+TITLE:Médico Deportivo & Nutricionista
+TEL;TYPE=CELL:+593999999999
+EMAIL;TYPE=INTERNET:dr.madden@clinica.com
+URL:https://www.clinicamadden.com
+ADR;TYPE=WORK:;;Av. Medicina 123;Ibarra;Imbabura;100150;Ecuador
+NOTE:Especialista en Medicina Deportiva y Nutrición Clínica
+END:VCARD`;
+
+            const blob = new Blob([vcard], { type: 'text/vcard' });
+            const url = window.URL.createObjectURL(blob);
+
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'dr-richard-madden.vcf';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            window.URL.revokeObjectURL(url);
+
+            alert('¡Contacto descargado! Abre el archivo para guardarlo en tu teléfono.');
+        }
+
+        // FUNCIÓN PARA MANEJAR EL FORMULARIO
+        // LÍNEA 1270: Cambia tu número de WhatsApp
+        function handleSubmit(event) {
+            event.preventDefault();
+
+            const formData = new FormData(event.target);
+            const data = Object.fromEntries(formData);
+
+            const message = `
+*Nueva Solicitud de Cita - Dr. Madden*
+
+*Nombre:* ${data.name}
+*Email:* ${data.email}
+*Teléfono:* ${data.phone}
+*Servicio:* ${data.service}
+*Mensaje:* ${data.message}
+            `.trim();
+
+            const whatsappURL = `https://wa.me/593999999999?text=${encodeURIComponent(message)}`;
+            window.open(whatsappURL, '_blank');
+
+            event.target.reset();
+            alert('¡Solicitud enviada! Te contactaremos pronto.');
+        }
+
+        // Scroll suave
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
