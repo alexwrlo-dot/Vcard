@@ -3,9 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dr. Richard Madden - vCard Digital</title>
+    
+    <!-- ========================================
+         🔧 DATOS PERSONALES #1
+         CAMBIAR: Tu nombre en el título
+    ========================================= -->
+    <title>Dr. Tu Nombre - vCard Digital</title>
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
     <style>
         * {
             margin: 0;
@@ -13,21 +20,25 @@
             box-sizing: border-box;
         }
 
+        /* ========================================
+           COLORES NEUMÓRFICOS
+        ========================================= */
         :root {
-            --primary: #7da0fa;
-            --primary-light: #8f9df8;
-            --primary-dark: #566487;
-            --secondary: #8f9df8;
-            --accent: #e684ae;
-            --text-dark: #566487;
-            --text-light: #8a96b3;
-            --bg-light: #eef2f9;
-            --bg-dark: #eef2f9;
+            --primary: #7c9be3;
+            --primary-light: #8ea9e8;
+            --primary-dark: #6b9aeb;
+            --secondary: #b599d9;
+            --accent: #6b9aeb;
+            --text-dark: #4a5568;
+            --text-light: #718096;
+            --bg-neu: #e0e5ec;
+            --shadow-light: rgba(255, 255, 255, 0.5);
+            --shadow-dark: rgba(163, 177, 198, 0.6);
         }
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background: linear-gradient(135deg, #eef2f9 0%, #f5f7fb 100%);
+            background: #e0e5ec;
             min-height: 100vh;
             padding: 0;
             margin: 0;
@@ -36,28 +47,31 @@
         .vcard-container {
             max-width: 480px;
             margin: 0 auto;
-            background: #eef2f9;
-            box-shadow: 20px 20px 40px #d1d9e6, -20px -20px 40px #ffffff;
+            background: #e0e5ec;
+            box-shadow: 20px 20px 40px rgba(163, 177, 198, 0.6), -20px -20px 40px rgba(255, 255, 255, 0.5);
         }
 
-        /* HEADER CON IMAGEN DE FONDO MÉDICA */
+        /* ========================================
+           🖼️ HEADER CON IMAGEN DE ESCULAPIO
+           🔧 CAMBIAR AQUÍ LA IMAGEN DEL ENCABEZADO
+        ========================================= */
         .header-image {
             position: relative;
             height: 180px;
             background-image: 
-                linear-gradient(135deg, rgba(10, 147, 150, 0.88) 0%, rgba(6, 182, 212, 0.88) 100%),
-                url('https://images.pexels.com/photos/4173239/pexels-photo-4173239.jpeg?auto=compress&cs=tinysrgb&w=800');
+                linear-gradient(135deg, rgba(124, 155, 227, 0.88) 0%, rgba(107, 154, 235, 0.88) 100%),
+                url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1200&auto=format&fit=crop');
             background-size: cover;
             background-position: center;
         }
 
-        /* PERFIL CON FONDO SUTIL */
+        /* PERFIL */
         .profile-section {
             position: relative;
             text-align: center;
             padding: 0 20px 30px;
             margin-top: -80px;
-            background: #eef2f9;
+            background: #e0e5ec;
         }
 
         .profile-photo {
@@ -68,189 +82,133 @@
             background-image: url('https://images.pexels.com/photos/5215024/pexels-photo-5215024.jpeg?auto=compress&cs=tinysrgb&w=300');
             background-size: cover;
             background-position: center;
-            border: 5px solid var(--bg-dark);
-            box-shadow: 12px 12px 24px #d1d9e6, -12px -12px 24px #ffffff;
+            border: 5px solid #e0e5ec;
+            box-shadow: 12px 12px 24px rgba(163, 177, 198, 0.6), -12px -12px 24px rgba(255, 255, 255, 0.5);
             overflow: hidden;
         }
 
         .profile-name {
             font-size: 28px;
             font-weight: 700;
-            color: #566487;
+            color: #4a5568;
             margin-bottom: 8px;
-            text-shadow: none;
         }
 
         .profile-title {
             font-size: 16px;
-            color: var(--primary-light);
+            color: #7c9be3;
             margin-bottom: 15px;
             font-weight: 500;
-            text-shadow: none;
         }
 
-        .profile-description {
+        .profile-bio {
             font-size: 14px;
-            color: #8a96b3;
+            color: #718096;
             line-height: 1.6;
-            padding: 0 10px;
             margin-bottom: 25px;
-            text-shadow: none;
         }
 
-        .quick-contact {
+        /* BOTONES NEUMÓRFICOS */
+        .action-buttons {
             display: flex;
+            gap: 12px;
+            margin: 25px 0;
             justify-content: center;
-            gap: 15px;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
         }
 
-        .quick-icon {
-            width: 50px;
-            height: 50px;
-            background: rgba(10, 147, 150, 0.3);
-            border-radius: 50%;
+        .btn-neu {
+            flex: 1;
+            padding: 14px 20px;
+            background: #e0e5ec;
+            border: none;
+            border-radius: 15px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #4a5568;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 5px 5px 10px rgba(163, 177, 198, 0.6), -5px -5px 10px rgba(255, 255, 255, 0.5);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--primary-light);
-            font-size: 20px;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            text-decoration: none;
-            backdrop-filter: blur(10px);
+            gap: 8px;
         }
 
-        .quick-icon:hover {
-            background: var(--primary);
-            color: #566487;
-            transform: translateY(-5px);
+        .btn-neu:hover {
+            box-shadow: 8px 8px 15px rgba(163, 177, 198, 0.7), -8px -8px 15px rgba(255, 255, 255, 0.6);
+            transform: translateY(-2px);
         }
 
-        /* SECCIONES CON FONDOS MÉDICOS */
-        .section {
-            padding: 30px 20px;
-            position: relative;
-            background: #eef2f9;
-            border-radius: 0;
-            box-shadow: inset 0 4px 8px rgba(209, 217, 230, 0.3);
+        .btn-neu:active {
+            box-shadow: inset 4px 4px 8px rgba(163, 177, 198, 0.6), inset -4px -4px 8px rgba(255, 255, 255, 0.5);
+            transform: translateY(0);
         }
 
-        .section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(238, 242, 249, 0.95);
-            z-index: 0;
+        .btn-primary {
+            background: linear-gradient(145deg, #6b9aeb, #7c9be3);
+            color: white;
+            box-shadow: 5px 5px 10px rgba(163, 177, 198, 0.6), -5px -5px 10px rgba(255, 255, 255, 0.5);
         }
 
-        .section > * {
-            position: relative;
-            z-index: 1;
+        .btn-primary:hover {
+            box-shadow: 8px 8px 15px rgba(163, 177, 198, 0.7), -8px -8px 15px rgba(255, 255, 255, 0.6);
         }
 
-        /* CONTACT SECTION CON FONDO */
-        .section-contact {
-            background-image: url('https://images.pexels.com/photos/7108344/pexels-photo-7108344.jpeg?auto=compress&cs=tinysrgb&w=800');
+        /* TARJETAS DE INFORMACIÓN */
+        .info-card {
+            background: #e0e5ec;
+            border-radius: 20px;
+            padding: 20px;
+            margin: 20px;
+            box-shadow: 9px 9px 16px rgba(163, 177, 198, 0.6), -9px -9px 16px rgba(255, 255, 255, 0.5);
         }
 
-        /* SERVICES SECTION CON FONDO */
-        .section-services {
-            background-image: url('https://images.pexels.com/photos/4386464/pexels-photo-4386464.jpeg?auto=compress&cs=tinysrgb&w=800');
-        }
-
-        /* GALLERY SECTION CON FONDO */
-        .section-gallery {
-            background-image: url('https://images.pexels.com/photos/3768894/pexels-photo-3768894.jpeg?auto=compress&cs=tinysrgb&w=800');
-        }
-
-        /* PRODUCTS SECTION CON FONDO */
-        .section-products {
-            background-image: url('https://images.pexels.com/photos/3768722/pexels-photo-3768722.jpeg?auto=compress&cs=tinysrgb&w=800');
-        }
-
-        /* TESTIMONIALS SECTION CON FONDO */
-        .section-testimonials {
-            background-image: url('https://images.pexels.com/photos/7108344/pexels-photo-7108344.jpeg?auto=compress&cs=tinysrgb&w=800');
-        }
-
-        /* BLOG SECTION CON FONDO */
-        .section-blog {
-            background-image: url('https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=800');
-        }
-
-        /* HOURS SECTION CON FONDO */
-        .section-hours {
-            background-image: url('https://images.pexels.com/photos/4173239/pexels-photo-4173239.jpeg?auto=compress&cs=tinysrgb&w=800');
-        }
-
-        /* SOCIAL SECTION CON FONDO */
-        .section-social {
-            background-image: url('https://images.pexels.com/photos/7108344/pexels-photo-7108344.jpeg?auto=compress&cs=tinysrgb&w=800');
-        }
-
-        /* FORM SECTION CON FONDO */
-        .section-form {
-            background-image: url('https://images.pexels.com/photos/4386464/pexels-photo-4386464.jpeg?auto=compress&cs=tinysrgb&w=800');
-        }
-
-        /* MAP SECTION CON FONDO */
-        .section-map {
-            background-image: url('https://images.pexels.com/photos/3768894/pexels-photo-3768894.jpeg?auto=compress&cs=tinysrgb&w=800');
-        }
-
-        .section-title {
+        .info-card h3 {
+            font-size: 18px;
+            color: #4a5568;
+            margin-bottom: 15px;
+            font-weight: 700;
             display: flex;
             align-items: center;
             gap: 10px;
-            font-size: 14px;
-            font-weight: 700;
-            color: #566487;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 20px;
-            text-shadow: none;
         }
 
-        .section-title i {
-            color: var(--primary-light);
-            font-size: 18px;
+        .info-card h3 i {
+            color: #7c9be3;
+            font-size: 20px;
         }
 
         .contact-item {
             display: flex;
             align-items: center;
-            gap: 15px;
-            margin-bottom: 15px;
             padding: 15px;
-            background: #eef2f9;
-            border-radius: 16px;
+            margin-bottom: 10px;
+            background: #e0e5ec;
+            border-radius: 15px;
             transition: all 0.3s ease;
-            text-decoration: none;
-            color: inherit;
-            box-shadow: 6px 6px 12px #d1d9e6, -6px -6px 12px #ffffff;
+            box-shadow: 5px 5px 10px rgba(163, 177, 198, 0.6), -5px -5px 10px rgba(255, 255, 255, 0.5);
         }
 
         .contact-item:hover {
-            transform: translateY(-3px);
-            box-shadow: 10px 10px 20px #d1d9e6, -10px -10px 20px #ffffff;
+            box-shadow: 8px 8px 15px rgba(163, 177, 198, 0.7), -8px -8px 15px rgba(255, 255, 255, 0.6);
+            transform: translateY(-2px);
         }
 
         .contact-icon {
             width: 45px;
             height: 45px;
-            background: linear-gradient(135deg, #7da0fa 0%, #8f9df8 100%);
-            border-radius: 50%;
+            background: linear-gradient(145deg, #6b9aeb, #7c9be3);
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #566487;
-            font-size: 20px;
-            flex-shrink: 0;
+            margin-right: 15px;
+            box-shadow: 3px 3px 6px rgba(163, 177, 198, 0.4), -3px -3px 6px rgba(255, 255, 255, 0.3);
+        }
+
+        .contact-icon i {
+            color: white;
+            font-size: 18px;
         }
 
         .contact-info {
@@ -258,1012 +216,895 @@
         }
 
         .contact-label {
-            font-size: 11px;
-            color: #8a96b3;
-            text-transform: uppercase;
+            font-size: 12px;
+            color: #718096;
             margin-bottom: 3px;
         }
 
         .contact-value {
             font-size: 15px;
-            color: #566487;
+            color: #4a5568;
             font-weight: 500;
         }
 
-        /* BOTÓN GUARDAR CONTACTO CON FONDO */
-        .save-contact-section {
-            padding: 20px;
-            text-align: center;
-            background: #eef2f9;
+        .contact-value a {
+            color: #4a5568;
+            text-decoration: none;
         }
 
-        .save-contact-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            width: 100%;
-            max-width: 400px;
-            padding: 18px 40px;
-            background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
-            color: #566487;
-            font-size: 18px;
-            font-weight: 700;
-            text-transform: uppercase;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
-            transition: all 0.3s ease;
-            letter-spacing: 1px;
-        }
-
-        .save-contact-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 35px rgba(16, 185, 129, 0.5);
-        }
-
-        .save-contact-btn i {
-            font-size: 24px;
-        }
-
-        /* QR SECTION CON FONDO */
+        /* QR CODE SECTION */
         .qr-section {
-            padding: 40px 20px;
             text-align: center;
-            background: #eef2f9;
-        }
-
-        .qr-code-container {
-            max-width: 280px;
-            margin: 0 auto;
             padding: 25px;
-            background: #fff;
+            background: #e0e5ec;
             border-radius: 20px;
-            box-shadow: 12px 12px 24px #d1d9e6, -12px -12px 24px #ffffff;
+            margin: 20px;
+            box-shadow: 9px 9px 16px rgba(163, 177, 198, 0.6), -9px -9px 16px rgba(255, 255, 255, 0.5);
         }
 
         .qr-code {
-            width: 100%;
-            height: 230px;
-            background: linear-gradient(135deg, #f0f0f0 0%, #e0e0e0 100%);
+            width: 200px;
+            height: 200px;
+            margin: 20px auto;
+            background: white;
             border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 15px;
+            padding: 15px;
+            box-shadow: inset 4px 4px 8px rgba(163, 177, 198, 0.3), inset -4px -4px 8px rgba(255, 255, 255, 0.5);
         }
 
-        .qr-code i {
-            font-size: 120px;
-            color: var(--primary);
+        .qr-code img {
+            width: 100%;
+            height: 100%;
         }
 
-        .qr-text {
-            font-size: 13px;
-            color: var(--text-dark);
-            line-height: 1.5;
-        }
-
+        /* SERVICIOS */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 15px;
-            margin-top: 10px;
+            padding: 20px;
         }
 
         .service-card {
-            background: #eef2f9;
+            background: #e0e5ec;
             border-radius: 20px;
-            overflow: hidden;
+            padding: 20px;
+            text-align: center;
             transition: all 0.3s ease;
-            cursor: pointer;
-            box-shadow: 8px 8px 16px #d1d9e6, -8px -8px 16px #ffffff;
+            box-shadow: 5px 5px 10px rgba(163, 177, 198, 0.6), -5px -5px 10px rgba(255, 255, 255, 0.5);
         }
 
         .service-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 12px 12px 24px #d1d9e6, -12px -12px 24px #ffffff;
+            transform: translateY(-5px);
+            box-shadow: 12px 12px 20px rgba(163, 177, 198, 0.7), -12px -12px 20px rgba(255, 255, 255, 0.6);
         }
 
-        .service-image {
-            width: 100%;
-            height: 120px;
-            background-size: cover;
-            background-position: center;
-            position: relative;
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 15px;
+            background: linear-gradient(145deg, #6b9aeb, #7c9be3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 4px 4px 8px rgba(163, 177, 198, 0.5), -4px -4px 8px rgba(255, 255, 255, 0.4);
         }
 
-        .service-image::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(10, 147, 150, 0.7) 0%, rgba(6, 182, 212, 0.7) 100%);
-        }
-
-        .service-content {
-            padding: 15px;
+        .service-icon i {
+            font-size: 28px;
+            color: white;
         }
 
         .service-title {
-            font-size: 14px;
-            font-weight: 700;
-            color: #566487;
+            font-size: 15px;
+            font-weight: 600;
+            color: #4a5568;
             margin-bottom: 8px;
         }
 
-        .service-description {
-            font-size: 12px;
-            color: #8a96b3;
-            line-height: 1.5;
+        .service-desc {
+            font-size: 13px;
+            color: #718096;
+            line-height: 1.4;
         }
 
+        /* GALERÍA */
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-            margin-top: 10px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            padding: 20px;
         }
 
         .gallery-item {
-            height: 140px;
-            border-radius: 12px;
+            aspect-ratio: 1;
+            border-radius: 15px;
             overflow: hidden;
-            background-size: cover;
-            background-position: center;
-            position: relative;
+            box-shadow: 5px 5px 10px rgba(163, 177, 198, 0.6), -5px -5px 10px rgba(255, 255, 255, 0.5);
             cursor: pointer;
             transition: all 0.3s ease;
         }
 
         .gallery-item:hover {
             transform: scale(1.05);
+            box-shadow: 8px 8px 15px rgba(163, 177, 198, 0.7), -8px -8px 15px rgba(255, 255, 255, 0.6);
         }
 
-        .gallery-item::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(10, 147, 150, 0.3) 0%, rgba(6, 182, 212, 0.3) 100%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
-        .gallery-item:hover::after {
-            opacity: 1;
-        }
-
+        /* PRODUCTOS */
         .products-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 15px;
-            margin-top: 10px;
+            padding: 20px;
         }
 
         .product-card {
-            background: #eef2f9;
+            background: #e0e5ec;
             border-radius: 20px;
-            overflow: hidden;
+            padding: 20px;
+            text-align: center;
             transition: all 0.3s ease;
-            box-shadow: 8px 8px 16px #d1d9e6, -8px -8px 16px #ffffff;
+            box-shadow: 5px 5px 10px rgba(163, 177, 198, 0.6), -5px -5px 10px rgba(255, 255, 255, 0.5);
         }
 
         .product-card:hover {
             transform: translateY(-5px);
-            box-shadow: 10px 10px 20px #d1d9e6, -10px -10px 20px #ffffff;
+            box-shadow: 12px 12px 20px rgba(163, 177, 198, 0.7), -12px -12px 20px rgba(255, 255, 255, 0.6);
         }
 
-        .product-image {
-            width: 100%;
-            height: 130px;
-            background-size: cover;
-            background-position: center;
-            position: relative;
-        }
-
-        .product-image::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(10, 147, 150, 0.6) 0%, rgba(6, 182, 212, 0.6) 100%);
-        }
-
-        .product-info {
-            padding: 15px;
-        }
-
-        .product-name {
-            font-size: 14px;
-            font-weight: 700;
-            color: #566487;
-            margin-bottom: 5px;
-        }
-
-        .product-price {
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--secondary);
-        }
-
-        .testimonial-card {
-            background: #eef2f9;
-            padding: 25px;
-            border-radius: 20px;
-            margin-top: 10px;
-            position: relative;
-            box-shadow: inset 6px 6px 12px #d1d9e6, inset -6px -6px 12px #ffffff;
-        }
-
-        .quote-icon {
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            font-size: 40px;
-            color: rgba(10, 147, 150, 0.3);
-        }
-
-        .testimonial-photo-small {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
+        .product-icon {
+            width: 80px;
+            height: 80px;
             margin: 0 auto 15px;
-            background-size: cover;
-            background-position: center;
-            border: 3px solid var(--primary);
-        }
-
-        .testimonial-text {
-            font-size: 14px;
-            color: #8a96b3;
-            line-height: 1.6;
-            margin-bottom: 15px;
-            font-style: italic;
-        }
-
-        .testimonial-author {
-            font-size: 15px;
-            font-weight: 700;
-            color: #566487;
-            margin-bottom: 5px;
-        }
-
-        .testimonial-role {
-            font-size: 13px;
-            color: var(--primary-light);
-        }
-
-        .testimonial-stars {
-            margin-top: 10px;
-            color: var(--accent);
-        }
-
-        .blog-card {
-            background: #eef2f9;
-            border-radius: 20px;
-            overflow: hidden;
-            margin-top: 10px;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            box-shadow: 8px 8px 16px #d1d9e6, -8px -8px 16px #ffffff;
-        }
-
-        .blog-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 12px 12px 24px #d1d9e6, -12px -12px 24px #ffffff;
-        }
-
-        .blog-image {
-            width: 100%;
-            height: 160px;
-            background-size: cover;
-            background-position: center;
-        }
-
-        .blog-content {
-            padding: 20px;
-        }
-
-        .blog-title {
-            font-size: 16px;
-            font-weight: 700;
-            color: #566487;
-            margin-bottom: 10px;
-            line-height: 1.4;
-        }
-
-        .blog-excerpt {
-            font-size: 13px;
-            color: #8a96b3;
-            line-height: 1.5;
-            margin-bottom: 10px;
-        }
-
-        .blog-link {
-            display: inline-block;
-            color: var(--primary-light);
-            font-size: 13px;
-            font-weight: 600;
-            text-decoration: none;
-        }
-
-        .blog-link:hover {
-            color: var(--secondary);
-        }
-
-        .hours-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-            margin-top: 10px;
-        }
-
-        .hour-item {
-            background: #eef2f9;
-            padding: 15px;
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 8px;
-            box-shadow: inset 4px 4px 8px #d1d9e6, inset -4px -4px 8px #ffffff;
-        }
-
-        .hour-icon {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, #7da0fa 0%, #8f9df8 100%);
+            background: linear-gradient(145deg, #6b9aeb, #7c9be3);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #566487;
+            box-shadow: 4px 4px 8px rgba(163, 177, 198, 0.5), -4px -4px 8px rgba(255, 255, 255, 0.4);
+        }
+
+        .product-icon i {
+            font-size: 35px;
+            color: white;
+        }
+
+        .product-name {
             font-size: 16px;
+            font-weight: 600;
+            color: #4a5568;
+            margin-bottom: 8px;
         }
 
-        .hour-info {
-            flex: 1;
-        }
-
-        .hour-day {
-            font-size: 13px;
+        .product-price {
+            font-size: 24px;
             font-weight: 700;
-            color: #566487;
+            color: #7c9be3;
+            margin-bottom: 15px;
+        }
+
+        .product-btn {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(145deg, #6b9aeb, #7c9be3);
+            border: none;
+            border-radius: 12px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 4px 4px 8px rgba(163, 177, 198, 0.5), -4px -4px 8px rgba(255, 255, 255, 0.4);
+        }
+
+        .product-btn:hover {
+            box-shadow: 6px 6px 12px rgba(163, 177, 198, 0.6), -6px -6px 12px rgba(255, 255, 255, 0.5);
+            transform: translateY(-2px);
+        }
+
+        /* TESTIMONIOS */
+        .testimonial-card {
+            background: #e0e5ec;
+            border-radius: 20px;
+            padding: 25px;
+            margin: 20px;
+            box-shadow: 9px 9px 16px rgba(163, 177, 198, 0.6), -9px -9px 16px rgba(255, 255, 255, 0.5);
+        }
+
+        .testimonial-text {
+            font-size: 15px;
+            color: #4a5568;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(145deg, #6b9aeb, #7c9be3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+            font-weight: 700;
+            box-shadow: 4px 4px 8px rgba(163, 177, 198, 0.5), -4px -4px 8px rgba(255, 255, 255, 0.4);
+        }
+
+        .author-info h4 {
+            font-size: 15px;
+            color: #4a5568;
             margin-bottom: 3px;
         }
 
-        .hour-time {
-            font-size: 11px;
-            color: #8a96b3;
+        .author-info p {
+            font-size: 13px;
+            color: #718096;
         }
 
-        .form-group {
+        /* BLOG */
+        .blog-card {
+            background: #e0e5ec;
+            border-radius: 20px;
+            padding: 25px;
+            margin: 20px;
+            box-shadow: 9px 9px 16px rgba(163, 177, 198, 0.6), -9px -9px 16px rgba(255, 255, 255, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 12px 12px 20px rgba(163, 177, 198, 0.7), -12px -12px 20px rgba(255, 255, 255, 0.6);
+        }
+
+        .blog-image {
+            width: 100%;
+            height: 150px;
+            border-radius: 15px;
             margin-bottom: 15px;
+            box-shadow: inset 3px 3px 6px rgba(163, 177, 198, 0.4), inset -3px -3px 6px rgba(255, 255, 255, 0.3);
+            background: linear-gradient(145deg, #6b9aeb, #7c9be3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .blog-image i {
+            font-size: 50px;
+            color: white;
+            opacity: 0.7;
+        }
+
+        .blog-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #4a5568;
+            margin-bottom: 10px;
+        }
+
+        .blog-excerpt {
+            font-size: 14px;
+            color: #718096;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .blog-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #7c9be3;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .blog-link:hover {
+            gap: 12px;
+        }
+
+        /* HORARIOS */
+        .hours-list {
+            padding: 20px;
+        }
+
+        .hours-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px;
+            margin-bottom: 10px;
+            background: #e0e5ec;
+            border-radius: 12px;
+            box-shadow: 4px 4px 8px rgba(163, 177, 198, 0.5), -4px -4px 8px rgba(255, 255, 255, 0.4);
+        }
+
+        .hours-day {
+            font-weight: 600;
+            color: #4a5568;
+        }
+
+        .hours-time {
+            color: #718096;
+        }
+
+        /* REDES SOCIALES */
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            padding: 20px;
+        }
+
+        .social-btn {
+            width: 50px;
+            height: 50px;
+            background: #e0e5ec;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #7c9be3;
+            font-size: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 5px 5px 10px rgba(163, 177, 198, 0.6), -5px -5px 10px rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+        }
+
+        .social-btn:hover {
+            box-shadow: 8px 8px 15px rgba(163, 177, 198, 0.7), -8px -8px 15px rgba(255, 255, 255, 0.6);
+            transform: translateY(-3px);
+            color: #6b9aeb;
+        }
+
+        .social-btn:active {
+            box-shadow: inset 3px 3px 6px rgba(163, 177, 198, 0.5), inset -3px -3px 6px rgba(255, 255, 255, 0.4);
+        }
+
+        /* FORMULARIO */
+        .form-group {
+            margin-bottom: 20px;
         }
 
         .form-group label {
             display: block;
-            font-size: 13px;
-            color: #566487;
-            margin-bottom: 8px;
+            font-size: 14px;
             font-weight: 600;
-            text-shadow: none;
+            color: #4a5568;
+            margin-bottom: 8px;
         }
 
         .form-group input,
         .form-group select,
         .form-group textarea {
             width: 100%;
-            padding: 14px;
-            background: rgba(255,255,255,0.15);
-            border: 1px solid rgba(255,255,255,0.25);
-            border-radius: 10px;
-            color: #566487;
+            padding: 15px;
+            background: #e0e5ec;
+            border: none;
+            border-radius: 12px;
             font-size: 14px;
-            font-family: inherit;
-            backdrop-filter: blur(10px);
+            color: #4a5568;
+            box-shadow: inset 4px 4px 8px rgba(163, 177, 198, 0.5), inset -4px -4px 8px rgba(255, 255, 255, 0.7);
+            transition: all 0.3s ease;
         }
 
-        .form-group input::placeholder,
-        .form-group textarea::placeholder {
-            color: #8a96b3;
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            box-shadow: inset 6px 6px 12px rgba(163, 177, 198, 0.6), inset -6px -6px 12px rgba(255, 255, 255, 0.8);
         }
 
         .form-group textarea {
             resize: vertical;
-            min-height: 100px;
+            min-height: 120px;
         }
 
-        .submit-btn {
-            width: 100%;
-            padding: 16px;
-            background: linear-gradient(135deg, #7da0fa 0%, #8f9df8 100%);
-            color: #566487;
-            border: none;
-            border-radius: 30px;
-            font-size: 16px;
-            font-weight: 700;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .submit-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(10, 147, 150, 0.5);
-        }
-
+        /* MAPA */
         .map-container {
-            width: 100%;
-            height: 200px;
-            background: #ddd;
-            border-radius: 12px;
+            height: 300px;
+            border-radius: 20px;
             overflow: hidden;
-            margin-top: 10px;
+            margin: 20px;
+            box-shadow: 9px 9px 16px rgba(163, 177, 198, 0.6), -9px -9px 16px rgba(255, 255, 255, 0.5);
         }
 
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-            margin-top: 10px;
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
         }
 
-        .social-btn {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        /* SECCIÓN TÍTULOS */
+        .section-title {
             font-size: 22px;
-            color: #566487;
-            transition: all 0.3s ease;
-            text-decoration: none;
+            font-weight: 700;
+            color: #4a5568;
+            text-align: center;
+            margin: 30px 0 20px;
         }
 
-        .social-btn:hover {
-            transform: translateY(-5px) scale(1.1);
-        }
-
-        .social-btn.linkedin {
-            background: #0077B5;
-        }
-
-        .social-btn.facebook {
-            background: #1877F2;
-        }
-
-        .social-btn.instagram {
-            background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
-        }
-
-        .social-btn.twitter {
-            background: #1DA1F2;
-        }
-
-        .social-btn.whatsapp {
-            background: #25D366;
+        /* FOOTER */
+        .footer {
+            text-align: center;
+            padding: 30px 20px;
+            background: #e0e5ec;
+            color: #718096;
+            font-size: 13px;
         }
 
         /* RESPONSIVE */
         @media (max-width: 480px) {
-            .profile-photo {
-                width: 140px;
-                height: 140px;
-            }
-
             .services-grid,
-            .products-grid,
-            .gallery-grid,
-            .hours-grid {
+            .products-grid {
                 grid-template-columns: 1fr;
             }
 
-            .save-contact-btn {
-                font-size: 16px;
-                padding: 16px 30px;
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
     </style>
 </head>
 <body>
     <div class="vcard-container">
-        <!-- HEADER CON IMAGEN MÉDICA -->
+        
+        <!-- ========================================
+             HEADER CON IMAGEN DE ESCULAPIO
+             🔧 Para cambiar la imagen del encabezado,
+             edita la línea 60 del CSS arriba
+        ========================================= -->
         <div class="header-image"></div>
 
-        <!-- PERFIL CON FONDO -->
+        <!-- ========================================
+             🔧 DATOS PERSONALES #2
+             PERFIL: Nombre, título, foto y biografía
+        ========================================= -->
         <div class="profile-section">
+            <!-- 🔧 CAMBIAR: Imagen de perfil (línea background-image) -->
             <div class="profile-photo"></div>
+            
+            <!-- 🔧 CAMBIAR: Tu nombre -->
+            <h1 class="profile-name">Dr. Tu Nombre Completo</h1>
+            
+            <!-- 🔧 CAMBIAR: Tu especialidad -->
+            <p class="profile-title">Tu Especialidad Médica</p>
+            
+            <!-- 🔧 CAMBIAR: Tu biografía breve -->
+            <p class="profile-bio">
+                Descripción profesional breve sobre tu experiencia, especialización y enfoque médico. Explica qué te hace único y cómo ayudas a tus pacientes.
+            </p>
 
-            <!-- LÍNEA 756: Cambia el nombre del médico -->
-            <div class="profile-name">Dr. Richard Madden</div>
-
-            <!-- LÍNEA 759: Cambia la especialidad -->
-            <div class="profile-title">Medicina Deportiva & Nutrición</div>
-
-            <!-- LÍNEAS 762-764: Cambia la descripción -->
-            <div class="profile-description">
-                Médico deportivo certificado con más de 10 años de experiencia. Especializado en medicina deportiva, nutrición clínica y optimización del rendimiento atlético.
-            </div>
-
-            <div class="quick-contact">
-                <!-- LÍNEAS 769-785: Cambia tus datos de contacto -->
-                <a href="tel:+593999999999" class="quick-icon">
-                    <i class="fas fa-phone"></i>
-                </a>
-                <a href="mailto:dr.madden@clinica.com" class="quick-icon">
-                    <i class="fas fa-envelope"></i>
-                </a>
-                <a href="https://wa.me/593999999999" class="quick-icon" target="_blank">
-                    <i class="fab fa-whatsapp"></i>
-                </a>
-                <a href="https://www.clinicamadden.com" class="quick-icon" target="_blank">
-                    <i class="fas fa-globe"></i>
-                </a>
+            <!-- BOTONES DE ACCIÓN -->
+            <div class="action-buttons">
+                <button class="btn-neu btn-primary" onclick="downloadVCard()">
+                    <i class="fas fa-download"></i>
+                    Guardar Contacto
+                </button>
+                <button class="btn-neu" onclick="document.getElementById('contacto').scrollIntoView({behavior: 'smooth'})">
+                    <i class="fas fa-calendar"></i>
+                    Agendar Cita
+                </button>
             </div>
         </div>
 
-        <!-- SECCIÓN CONTACT CON FONDO -->
-        <div class="section section-contact">
-            <div class="section-title">
-                <i class="fas fa-address-card"></i>
-                Contact
-            </div>
-
-            <!-- LÍNEAS 796-880: Cambia la información de contacto -->
-            <a href="tel:+593999999999" class="contact-item">
+        <!-- ========================================
+             🔧 DATOS PERSONALES #3
+             CONTACTO: Teléfono, Email, Dirección, Web
+        ========================================= -->
+        <div class="info-card">
+            <h3><i class="fas fa-address-book"></i> Contact</h3>
+            
+            <!-- 🔧 CAMBIAR: Tu teléfono -->
+            <div class="contact-item">
                 <div class="contact-icon">
                     <i class="fas fa-phone"></i>
                 </div>
                 <div class="contact-info">
                     <div class="contact-label">Teléfono</div>
-                    <div class="contact-value">+593 999 999 999</div>
+                    <div class="contact-value">
+                        <a href="tel:+593999999999">+593 999 999 999</a>
+                    </div>
                 </div>
-            </a>
+            </div>
 
-            <a href="mailto:dr.madden@clinica.com" class="contact-item">
+            <!-- 🔧 CAMBIAR: Tu email -->
+            <div class="contact-item">
                 <div class="contact-icon">
                     <i class="fas fa-envelope"></i>
                 </div>
                 <div class="contact-info">
                     <div class="contact-label">Email</div>
-                    <div class="contact-value">dr.madden@clinica.com</div>
+                    <div class="contact-value">
+                        <a href="mailto:tu.email@ejemplo.com">tu.email@ejemplo.com</a>
+                    </div>
                 </div>
-            </a>
+            </div>
 
+            <!-- 🔧 CAMBIAR: Tu dirección -->
             <div class="contact-item">
                 <div class="contact-icon">
                     <i class="fas fa-map-marker-alt"></i>
                 </div>
                 <div class="contact-info">
                     <div class="contact-label">Dirección</div>
-                    <div class="contact-value">Av. Medicina 123, Ibarra</div>
+                    <div class="contact-value">Tu Dirección Completa, Ciudad</div>
                 </div>
             </div>
 
-            <a href="https://www.clinicamadden.com" class="contact-item" target="_blank">
+            <!-- 🔧 CAMBIAR: Tu sitio web -->
+            <div class="contact-item">
                 <div class="contact-icon">
                     <i class="fas fa-globe"></i>
                 </div>
                 <div class="contact-info">
                     <div class="contact-label">Sitio Web</div>
-                    <div class="contact-value">www.clinicamadden.com</div>
+                    <div class="contact-value">
+                        <a href="https://www.tusitio.com" target="_blank">www.tusitio.com</a>
+                    </div>
                 </div>
+            </div>
+        </div>
+
+        <!-- ========================================
+             QR CODE SECTION
+             El código se genera automáticamente
+        ========================================= -->
+        <div class="qr-section">
+            <h3 class="section-title">QR Code</h3>
+            <p class="profile-bio">Escanea este código QR para guardar mi contacto en tu teléfono</p>
+            <div class="qr-code" id="qrcode"></div>
+        </div>
+
+        <!-- ========================================
+             🔧 DATOS PERSONALES #4
+             SERVICIOS: Cambia los 4 servicios
+        ========================================= -->
+        <h3 class="section-title">Nuestros Servicios</h3>
+        <div class="services-grid">
+            
+            <!-- Servicio 1 - 🔧 CAMBIAR -->
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-stethoscope"></i>
+                </div>
+                <div class="service-title">Servicio 1</div>
+                <div class="service-desc">Descripción breve del servicio</div>
+            </div>
+
+            <!-- Servicio 2 - 🔧 CAMBIAR -->
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-heartbeat"></i>
+                </div>
+                <div class="service-title">Servicio 2</div>
+                <div class="service-desc">Descripción breve del servicio</div>
+            </div>
+
+            <!-- Servicio 3 - 🔧 CAMBIAR -->
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-hand-holding-medical"></i>
+                </div>
+                <div class="service-title">Servicio 3</div>
+                <div class="service-desc">Descripción breve del servicio</div>
+            </div>
+
+            <!-- Servicio 4 - 🔧 CAMBIAR -->
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-user-md"></i>
+                </div>
+                <div class="service-title">Servicio 4</div>
+                <div class="service-desc">Descripción breve del servicio</div>
+            </div>
+        </div>
+
+        <!-- GALERÍA -->
+        <h3 class="section-title">Gallery</h3>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="https://images.pexels.com/photos/5473184/pexels-photo-5473184.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Galería 1">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.pexels.com/photos/5473298/pexels-photo-5473298.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Galería 2">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.pexels.com/photos/6010936/pexels-photo-6010936.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Galería 3">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.pexels.com/photos/4386467/pexels-photo-4386467.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Galería 4">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.pexels.com/photos/4386467/pexels-photo-4386467.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Galería 5">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.pexels.com/photos/4173251/pexels-photo-4173251.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Galería 6">
+            </div>
+        </div>
+
+        <!-- ========================================
+             🔧 DATOS PERSONALES #5
+             PRODUCTOS/PAQUETES: Cambia precios y nombres
+        ========================================= -->
+        <h3 class="section-title">Products</h3>
+        <div class="products-grid">
+            
+            <!-- Producto 1 - 🔧 CAMBIAR -->
+            <div class="product-card">
+                <div class="product-icon">
+                    <i class="fas fa-notes-medical"></i>
+                </div>
+                <div class="product-name">Paquete 1</div>
+                <div class="product-price">$XXX</div>
+                <button class="product-btn" onclick="alert('Contactar para este servicio')">
+                    <i class="fas fa-cart-plus"></i> Solicitar
+                </button>
+            </div>
+
+            <!-- Producto 2 - 🔧 CAMBIAR -->
+            <div class="product-card">
+                <div class="product-icon">
+                    <i class="fas fa-prescription"></i>
+                </div>
+                <div class="product-name">Paquete 2</div>
+                <div class="product-price">$XXX</div>
+                <button class="product-btn" onclick="alert('Contactar para este servicio')">
+                    <i class="fas fa-cart-plus"></i> Solicitar
+                </button>
+            </div>
+        </div>
+
+        <!-- ========================================
+             🔧 DATOS PERSONALES #6
+             TESTIMONIO: Cambia el testimonio
+        ========================================= -->
+        <h3 class="section-title">Testimonials</h3>
+        <div class="testimonial-card">
+            <!-- 🔧 CAMBIAR: Testimonio del paciente -->
+            <p class="testimonial-text">
+                "Escribe aquí un testimonio real de uno de tus pacientes. Describe cómo les ayudaste y los resultados que obtuvieron con tu tratamiento."
+            </p>
+            <div class="testimonial-author">
+                <div class="author-avatar">JS</div>
+                <div class="author-info">
+                    <h4>Nombre del Paciente</h4>
+                    <p>Ocupación o Contexto</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========================================
+             🔧 DATOS PERSONALES #7
+             BLOG: Cambia título y contenido del artículo
+        ========================================= -->
+        <h3 class="section-title">Blog</h3>
+        <div class="blog-card">
+            <div class="blog-image">
+                <i class="fas fa-newspaper"></i>
+            </div>
+            <!-- 🔧 CAMBIAR: Título y contenido del blog -->
+            <h3 class="blog-title">Título de tu artículo de blog</h3>
+            <p class="blog-excerpt">
+                Escribe un resumen breve de tu artículo. Explica de qué trata y por qué es útil para tus pacientes...
+            </p>
+            <a href="#" class="blog-link">
+                Leer más <i class="fas fa-arrow-right"></i>
             </a>
         </div>
 
-        <!-- BOTÓN GUARDAR CONTACTO CON FONDO -->
-        <div class="save-contact-section">
-            <button class="save-contact-btn" onclick="saveContact()">
-                <i class="fas fa-user-plus"></i>
-                Guardar Contacto
-            </button>
-        </div>
-
-        <!-- QR CODE CON FONDO -->
-        <div class="qr-section">
-            <div class="section-title" style="justify-content: center;">
-                <i class="fas fa-qrcode"></i>
-                QR Code
+        <!-- ========================================
+             🔧 DATOS PERSONALES #8
+             HORARIOS: Cambia tus horarios de atención
+        ========================================= -->
+        <h3 class="section-title">Business Hours</h3>
+        <div class="hours-list">
+            <!-- 🔧 CAMBIAR: Cada día con su horario -->
+            <div class="hours-item">
+                <span class="hours-day">Lunes</span>
+                <span class="hours-time">09:00 - 20:00</span>
             </div>
-
-            <div class="qr-code-container">
-                <div class="qr-code">
-                    <!-- LÍNEA 875: Reemplaza con tu código QR real -->
-                    <i class="fas fa-qrcode"></i>
-                </div>
-                <div class="qr-text">
-                    Escanea este código QR para guardar mi contacto en tu teléfono
-                </div>
+            <div class="hours-item">
+                <span class="hours-day">Martes</span>
+                <span class="hours-time">09:00 - 20:00</span>
             </div>
-        </div>
-
-        <!-- SERVICIOS CON FONDO -->
-        <div class="section section-services">
-            <div class="section-title">
-                <i class="fas fa-stethoscope"></i>
-                Nuestros Servicios
+            <div class="hours-item">
+                <span class="hours-day">Miércoles</span>
+                <span class="hours-time">09:00 - 20:00</span>
             </div>
-
-            <div class="services-grid">
-                <!-- LÍNEAS 890-923: Personaliza tus servicios médicos -->
-                <div class="service-card">
-                    <div class="service-image" style="background-image: url('https://images.pexels.com/photos/4386464/pexels-photo-4386464.jpeg?auto=compress&cs=tinysrgb&w=400');"></div>
-                    <div class="service-content">
-                        <div class="service-title">Medicina Deportiva</div>
-                        <div class="service-description">Evaluación y prevención de lesiones deportivas</div>
-                    </div>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-image" style="background-image: url('https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=400');"></div>
-                    <div class="service-content">
-                        <div class="service-title">Nutrición Clínica</div>
-                        <div class="service-description">Plans alimenticios personalizados</div>
-                    </div>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-image" style="background-image: url('https://images.pexels.com/photos/3768894/pexels-photo-3768894.jpeg?auto=compress&cs=tinysrgb&w=400');"></div>
-                    <div class="service-content">
-                        <div class="service-title">Fisioterapia</div>
-                        <div class="service-description">Recuperación y rehabilitación física</div>
-                    </div>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-image" style="background-image: url('https://images.pexels.com/photos/7108344/pexels-photo-7108344.jpeg?auto=compress&cs=tinysrgb&w=400');"></div>
-                    <div class="service-content">
-                        <div class="service-title">Chequeo Médico</div>
-                        <div class="service-description">Evaluación médica completa</div>
-                    </div>
-                </div>
+            <div class="hours-item">
+                <span class="hours-day">Jueves</span>
+                <span class="hours-time">09:00 - 20:00</span>
+            </div>
+            <div class="hours-item">
+                <span class="hours-day">Viernes</span>
+                <span class="hours-time">09:00 - 20:00</span>
+            </div>
+            <div class="hours-item">
+                <span class="hours-day">Sábado</span>
+                <span class="hours-time">10:00 - 14:00</span>
+            </div>
+            <div class="hours-item">
+                <span class="hours-day">Domingo</span>
+                <span class="hours-time">Cerrado</span>
             </div>
         </div>
 
-        <!-- GALERÍA CON FONDO -->
-        <div class="section section-gallery">
-            <div class="section-title">
-                <i class="fas fa-images"></i>
-                Gallery
-            </div>
-
-            <div class="gallery-grid">
-                <!-- LÍNEAS 940-953: Imágenes de tu consultorio -->
-                <div class="gallery-item" style="background-image: url('https://images.pexels.com/photos/7108344/pexels-photo-7108344.jpeg?auto=compress&cs=tinysrgb&w=500');"></div>
-
-                <div class="gallery-item" style="background-image: url('https://images.pexels.com/photos/4386464/pexels-photo-4386464.jpeg?auto=compress&cs=tinysrgb&w=500');"></div>
-
-                <div class="gallery-item" style="background-image: url('https://images.pexels.com/photos/3768894/pexels-photo-3768894.jpeg?auto=compress&cs=tinysrgb&w=500');"></div>
-
-                <div class="gallery-item" style="background-image: url('https://images.pexels.com/photos/4173239/pexels-photo-4173239.jpeg?auto=compress&cs=tinysrgb&w=500');"></div>
-            </div>
+        <!-- ========================================
+             🔧 DATOS PERSONALES #9
+             REDES SOCIALES: Enlaces a tus redes
+        ========================================= -->
+        <h3 class="section-title">Social Media</h3>
+        <div class="social-links">
+            <!-- 🔧 CAMBIAR: Enlaces a tus redes sociales -->
+            <a href="https://facebook.com/tupagina" target="_blank" class="social-btn">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://instagram.com/tuperfil" target="_blank" class="social-btn">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://wa.me/593999999999" target="_blank" class="social-btn">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+            <a href="https://linkedin.com/in/tuperfil" target="_blank" class="social-btn">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="https://twitter.com/tuperfil" target="_blank" class="social-btn">
+                <i class="fab fa-twitter"></i>
+            </a>
         </div>
 
-        <!-- PRODUCTOS CON FONDO -->
-        <div class="section section-products">
-            <div class="section-title">
-                <i class="fas fa-box-open"></i>
-                Products
-            </div>
-
-            <div class="products-grid">
-                <!-- LÍNEAS 965-988: Personaliza tus paquetes -->
-                <div class="product-card">
-                    <div class="product-image" style="background-image: url('https://images.pexels.com/photos/3768722/pexels-photo-3768722.jpeg?auto=compress&cs=tinysrgb&w=400');"></div>
-                    <div class="product-info">
-                        <div class="product-name">Chequeo Completo</div>
-                        <div class="product-price">$150</div>
-                    </div>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-image" style="background-image: url('https://images.pexels.com/photos/4173239/pexels-photo-4173239.jpeg?auto=compress&cs=tinysrgb&w=400');"></div>
-                    <div class="product-info">
-                        <div class="product-name">Plan Nutricional</div>
-                        <div class="product-price">$89</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- TESTIMONIOS CON FONDO -->
-        <div class="section section-testimonials">
-            <div class="section-title">
-                <i class="fas fa-quote-left"></i>
-                Testimonials
-            </div>
-
-            <div class="testimonial-card">
-                <i class="fas fa-quote-left quote-icon"></i>
-                <div class="testimonial-photo-small" style="background-image: url('https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=150');"></div>
-
-                <!-- LÍNEAS 1004-1008: Cambia el testimonio -->
-                <div class="testimonial-text">
-                    "El Dr. Madden cambió mi vida. Su enfoque integral me ayudó a recuperarme de una lesión que otros médicos dijeron que era irreversible. Altamente recomendado."
-                </div>
-                <div class="testimonial-author">John Smith</div>
-                <div class="testimonial-role">Maratonista</div>
-                <div class="testimonial-stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-            </div>
-        </div>
-
-        <!-- BLOG CON FONDO -->
-        <div class="section section-blog">
-            <div class="section-title">
-                <i class="fas fa-blog"></i>
-                Blog
-            </div>
-
-            <div class="blog-card">
-                <div class="blog-image" style="background-image: url('https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=600');"></div>
-                <div class="blog-content">
-                    <!-- LÍNEAS 1033-1038: Cambia el contenido del blog -->
-                    <div class="blog-title">Cómo prevenir lesiones deportivas: Guía completa</div>
-                    <div class="blog-excerpt">
-                        Descubre las técnicas más efectivas para prevenir lesiones durante tu entrenamiento y mejorar tu rendimiento deportivo...
-                    </div>
-                    <a href="#" class="blog-link">Leer más →</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- HORARIOS CON FONDO -->
-        <div class="section section-hours">
-            <div class="section-title">
-                <i class="fas fa-clock"></i>
-                Business Hours
-            </div>
-
-            <div class="hours-grid">
-                <!-- LÍNEAS 1051-1117: Cambia tus horarios -->
-                <div class="hour-item">
-                    <div class="hour-icon">
-                        <i class="fas fa-sun"></i>
-                    </div>
-                    <div class="hour-info">
-                        <div class="hour-day">Lunes</div>
-                        <div class="hour-time">09:00 - 20:00</div>
-                    </div>
-                </div>
-
-                <div class="hour-item">
-                    <div class="hour-icon">
-                        <i class="fas fa-sun"></i>
-                    </div>
-                    <div class="hour-info">
-                        <div class="hour-day">Martes</div>
-                        <div class="hour-time">09:00 - 20:00</div>
-                    </div>
-                </div>
-
-                <div class="hour-item">
-                    <div class="hour-icon">
-                        <i class="fas fa-sun"></i>
-                    </div>
-                    <div class="hour-info">
-                        <div class="hour-day">Miércoles</div>
-                        <div class="hour-time">09:00 - 20:00</div>
-                    </div>
-                </div>
-
-                <div class="hour-item">
-                    <div class="hour-icon">
-                        <i class="fas fa-sun"></i>
-                    </div>
-                    <div class="hour-info">
-                        <div class="hour-day">Jueves</div>
-                        <div class="hour-time">09:00 - 20:00</div>
-                    </div>
-                </div>
-
-                <div class="hour-item">
-                    <div class="hour-icon">
-                        <i class="fas fa-sun"></i>
-                    </div>
-                    <div class="hour-info">
-                        <div class="hour-day">Viernes</div>
-                        <div class="hour-time">09:00 - 20:00</div>
-                    </div>
-                </div>
-
-                <div class="hour-item">
-                    <div class="hour-icon">
-                        <i class="fas fa-moon"></i>
-                    </div>
-                    <div class="hour-info">
-                        <div class="hour-day">Sábado</div>
-                        <div class="hour-time">10:00 - 14:00</div>
-                    </div>
-                </div>
-
-                <div class="hour-item">
-                    <div class="hour-icon">
-                        <i class="fas fa-times"></i>
-                    </div>
-                    <div class="hour-info">
-                        <div class="hour-day">Domingo</div>
-                        <div class="hour-time">Cerrado</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- REDES SOCIALES CON FONDO -->
-        <div class="section section-social">
-            <div class="section-title">
-                <i class="fas fa-share-alt"></i>
-                Social Media
-            </div>
-
-            <div class="social-links">
-                <!-- LÍNEAS 1132-1157: Cambia tus enlaces -->
-                <a href="https://www.linkedin.com/in/dr-madden" class="social-btn linkedin" target="_blank">
-                    <i class="fab fa-linkedin-in"></i>
-                </a>
-
-                <a href="https://www.facebook.com/drmadden" class="social-btn facebook" target="_blank">
-                    <i class="fab fa-facebook-f"></i>
-                </a>
-
-                <a href="https://www.instagram.com/drmadden" class="social-btn instagram" target="_blank">
-                    <i class="fab fa-instagram"></i>
-                </a>
-
-                <a href="https://twitter.com/drmadden" class="social-btn twitter" target="_blank">
-                    <i class="fab fa-twitter"></i>
-                </a>
-
-                <a href="https://wa.me/593999999999" class="social-btn whatsapp" target="_blank">
-                    <i class="fab fa-whatsapp"></i>
-                </a>
-            </div>
-        </div>
-
-        <!-- FORMULARIO CON FONDO -->
-        <div class="section section-form">
-            <div class="section-title">
-                <i class="fas fa-paper-plane"></i>
-                Make an Appointment
-            </div>
-
-            <form onsubmit="handleSubmit(event)">
-                <!-- LÍNEAS 1169-1194: Formulario funcional -->
+        <!-- ========================================
+             FORMULARIO DE CONTACTO
+             ⚠️ Requiere configuración de Formspree
+        ========================================= -->
+        <div class="info-card" id="contacto">
+            <h3><i class="fas fa-paper-plane"></i> Make an Appointment</h3>
+            
+            <!-- 🔧 CAMBIAR: ID de Formspree en action -->
+            <form action="https://formspree.io/f/TU_ID_FORMSPREE" method="POST">
                 <div class="form-group">
-                    <label for="name">Nombre Completo *</label>
-                    <input type="text" id="name" name="name" required placeholder="Tu nombre">
+                    <label>Nombre Completo *</label>
+                    <input type="text" name="nombre" required placeholder="Juan Pérez">
                 </div>
 
                 <div class="form-group">
-                    <label for="email">Email *</label>
-                    <input type="email" id="email" name="email" required placeholder="tu@email.com">
+                    <label>Email *</label>
+                    <input type="email" name="email" required placeholder="juan@ejemplo.com">
                 </div>
 
                 <div class="form-group">
-                    <label for="phone">Teléfono *</label>
-                    <input type="tel" id="phone" name="phone" required placeholder="+593 99 999 9999">
+                    <label>Teléfono *</label>
+                    <input type="tel" name="telefono" required placeholder="+593 999 999 999">
                 </div>
 
                 <div class="form-group">
-                    <label for="service">Servicio de Interés</label>
-                    <select id="service" name="service">
+                    <label>Servicio de Interés</label>
+                    <select name="servicio">
                         <option value="">Selecciona un servicio</option>
-                        <option value="medicina-deportiva">Medicina Deportiva</option>
-                        <option value="nutricion">Nutrición Clínica</option>
-                        <option value="fisioterapia">Fisioterapia</option>
-                        <option value="chequeo">Chequeo Médico</option>
+                        <option value="servicio1">Servicio 1</option>
+                        <option value="servicio2">Servicio 2</option>
+                        <option value="servicio3">Servicio 3</option>
+                        <option value="servicio4">Servicio 4</option>
                     </select>
                 </div>
 
                 <div class="form-group">
-                    <label for="message">Mensaje *</label>
-                    <textarea id="message" name="message" required placeholder="Cuéntanos qué necesitas..."></textarea>
+                    <label>Mensaje *</label>
+                    <textarea name="mensaje" required placeholder="Cuéntame cómo puedo ayudarte..."></textarea>
                 </div>
 
-                <button type="submit" class="submit-btn">Enviar Solicitud</button>
+                <button type="submit" class="btn-neu btn-primary" style="width: 100%; padding: 15px;">
+                    <i class="fas fa-paper-plane"></i> Enviar Solicitud
+                </button>
             </form>
         </div>
 
-        <!-- MAPA CON FONDO -->
-        <div class="section section-map">
-            <div class="section-title">
-                <i class="fas fa-map-marked-alt"></i>
-                Encuéntranos
-            </div>
-
-            <div class="map-container">
-                <!-- LÍNEA 1220: Integra Google Maps -->
-                <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.815598771234!2d-78.1234!3d0.35!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMMKwMjEnMDAuMCJOIDc4wrAwNyczNi4wIlc!5e0!3m2!1ses!2sec!4v1234567890"
-                    width="100%"
-                    height="200"
-                    style="border:0;"
-                    allowfullscreen=""
-                    loading="lazy">
-                </iframe>
-            </div>
+        <!-- ========================================
+             🔧 DATOS PERSONALES #10
+             MAPA: Cambia las coordenadas de tu ubicación
+        ========================================= -->
+        <h3 class="section-title">Encuéntranos</h3>
+        <!-- 🔧 CAMBIAR: Coordenadas en el src del iframe -->
+        <div class="map-container">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.799655903596!2d-78.11989!3d0.35716!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMMKwMjEnMjUuOCJOIDc4wrAwNycxMS42Ilc!5e0!3m2!1ses!2sec!4v1234567890"
+                allowfullscreen="" 
+                loading="lazy">
+            </iframe>
         </div>
+
+        <!-- FOOTER -->
+        <div class="footer">
+            <!-- 🔧 CAMBIAR: Tu nombre en el copyright -->
+            <p>&copy; 2026 Dr. Tu Nombre. Todos los derechos reservados.</p>
+            <p style="margin-top: 10px; font-size: 12px;">Desarrollado con ❤️ para pacientes</p>
+        </div>
+
     </div>
 
+    <!-- ========================================
+         JAVASCRIPT - Funcionalidades
+         🔧 CONFIGURAR: Datos de vCard
+    ========================================= -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <script>
-        // FUNCIÓN PARA GUARDAR CONTACTO
-        // LÍNEAS 1237-1265: Actualiza con tus datos
-        function saveContact() {
+        // ========================================
+        // 🔧 CONFIGURACIÓN VCARD (OBLIGATORIO)
+        // Cambiar TODOS estos datos con tu información
+        // ========================================
+        const vcardData = {
+            nombre: "Dr. Tu Nombre Completo",
+            titulo: "Tu Especialidad Médica",
+            telefono: "+593999999999",
+            email: "tu.email@ejemplo.com",
+            sitioWeb: "www.tusitio.com",
+            direccion: "Tu Dirección Completa, Ciudad, País"
+        };
+
+        // GENERAR QR CODE
+        const qrcode = new QRCode(document.getElementById("qrcode"), {
+            text: `BEGIN:VCARD
+VERSION:3.0
+FN:${vcardData.nombre}
+TITLE:${vcardData.titulo}
+TEL:${vcardData.telefono}
+EMAIL:${vcardData.email}
+URL:${vcardData.sitioWeb}
+ADR:;;${vcardData.direccion}
+END:VCARD`,
+            width: 170,
+            height: 170,
+            colorDark: "#4a5568",
+            colorLight: "#ffffff",
+        });
+
+        // FUNCIÓN PARA DESCARGAR VCARD
+        function downloadVCard() {
             const vcard = `BEGIN:VCARD
 VERSION:3.0
-FN:Dr. Richard Madden
-N:Madden;Richard;;Dr.;
-ORG:Clínica Médica Deportiva
-TITLE:Médico Deportivo & Nutricionista
-TEL;TYPE=CELL:+593999999999
-EMAIL;TYPE=INTERNET:dr.madden@clinica.com
-URL:https://www.clinicamadden.com
-ADR;TYPE=WORK:;;Av. Medicina 123;Ibarra;Imbabura;100150;Ecuador
-NOTE:Especialista en Medicina Deportiva y Nutrición Clínica
+FN:${vcardData.nombre}
+TITLE:${vcardData.titulo}
+TEL:${vcardData.telefono}
+EMAIL:${vcardData.email}
+URL:${vcardData.sitioWeb}
+ADR:;;${vcardData.direccion}
 END:VCARD`;
 
             const blob = new Blob([vcard], { type: 'text/vcard' });
             const url = window.URL.createObjectURL(blob);
-
-            const link = document.createElement('a');
-            link.href = url;
-            link.download = 'dr-richard-madden.vcf';
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'contacto.vcf';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
             window.URL.revokeObjectURL(url);
-
-            alert('¡Contacto descargado! Abre el archivo para guardarlo en tu teléfono.');
         }
 
-        // FUNCIÓN PARA MANEJAR EL FORMULARIO
-        // LÍNEA 1270: Cambia tu número de WhatsApp
-        function handleSubmit(event) {
-            event.preventDefault();
-
-            const formData = new FormData(event.target);
-            const data = Object.fromEntries(formData);
-
-            const message = `
-*Nueva Solicitud de Cita - Dr. Madden*
-
-*Nombre:* ${data.name}
-*Email:* ${data.email}
-*Teléfono:* ${data.phone}
-*Servicio:* ${data.service}
-*Mensaje:* ${data.message}
-            `.trim();
-
-            const whatsappURL = `https://wa.me/593999999999?text=${encodeURIComponent(message)}`;
-            window.open(whatsappURL, '_blank');
-
-            event.target.reset();
-            alert('¡Solicitud enviada! Te contactaremos pronto.');
-        }
-
-        // Scroll suave
+        // SMOOTH SCROLL
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    target.scrollIntoView({ behavior: 'smooth' });
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
                 }
             });
         });
