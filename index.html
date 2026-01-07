@@ -38,17 +38,25 @@
             color: var(--text-main);
             min-height: 100vh;
             line-height: 1.6;
-            background-color: transparent; /* Importante para ver el fondo */
+            background-color: transparent;
+            /* Evita el efecto rebote en iOS que a veces causa saltos */
+            overscroll-behavior-y: none; 
         }
 
-        /* --- FONDO IGUALADO A LA WEB (Detallado y Nítido) --- */
+        /* --- FONDO CORREGIDO (ANTI-SALTO / 100svh) --- */
         body::before {
             content: "";
             position: fixed; 
-            top: 0; left: 0; width: 100%; height: 100%;
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            
+            /* AQUÍ ESTÁ LA MAGIA: */
+            height: 100vh; /* Fallback para navegadores viejos */
+            height: 100svh; /* Smallest Viewport Height: Ignora la barra de navegación móvil */
+            
             z-index: -1;
             
-            /* Misma configuración que index.html para consistencia total */
             background-image: 
                 linear-gradient(rgba(224, 229, 236, 0.7), rgba(224, 229, 236, 0.7)),
                 url('./fondo-landing.jpg'); 
@@ -57,16 +65,14 @@
             background-position: center;
             opacity: 1;
             pointer-events: none;
-            will-change: transform; /* Anti-lag */
+            will-change: transform;
         }
 
         .overlay-wrapper {
-            /* TRANSPARENTE: Para que se vea la foto de fondo detallada */
             background-color: transparent; 
             min-height: 100vh;
             width: 100%;
             padding-bottom: 40px;
-            /* Eliminamos backdrop-filter para máxima nitidez del fondo */
             overflow-x: hidden;
         }
 
@@ -203,7 +209,6 @@
         
         .price-tag { font-size: 1.2rem; color: var(--primary); font-weight: 700; }
         
-        /* ESTILO PARA MENSAJE DE ÉXITO */
         #form-status { margin-top: 15px; text-align: center; font-weight: 600; font-size: 0.9rem; display: none; }
         .status-success { color: #27ae60; }
         .status-error { color: #e74c3c; }
