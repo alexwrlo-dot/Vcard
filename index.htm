@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Dr. Alex Reyes - Perfil Digital</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* ========================================= */
+        /* SISTEMA VISUAL (DISEÑO ORIGINAL)          */
+        /* ========================================= */
+        :root {
+            --bg-glass: rgba(224, 229, 236, 0.9); 
+            --primary: #7c9be3;
+            --primary-dark: #6b9aeb;
+            --text-main: #4a5568;
+            --text-secondary: #718096;
+            --shadow-light: rgba(255, 255, 255, 0.8);
+            --shadow-dark: rgba(163, 177, 198, 0.6);
+            --pichincha-yellow: #ffdd00;
+            --paypal-blue: #00457C;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+        html, body {
+            overflow-x: hidden; 
+            width: 100%;
+            position: relative;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-main);
+            min-height: 100vh;
+            line-height: 1.6;
+            /* Fondo manejado en ::before para máximo rendimiento */
+        }
+
+        /* --- OPTIMIZACIÓN DE FONDO (ANTI-LAG) --- */
+        body::before {
+            content: "";
+            position: fixed; 
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1;
+            /* Asegúrate de que este archivo exista en tu GitHub */
+            background-image: url('./fondo-web.jpg');
+            background-size: cover;
+            background-position: center;
+            will-change: transform; /* Acelera el renderizado en móviles */
+        }
+
+        .overlay-wrapper {
+            background-color: rgba(224, 229, 236, 0.85);
+            min-height: 100vh;
+            width: 100%;
+            padding-bottom: 40px;
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px); /* Soporte Safari */
+            overflow-x: hidden;
+        }
+
+        .main-container {
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+            padding-top: 40px;
+            overflow: hidden; 
+        }
+
+        /* --- TARJETAS --- */
+        .neu-card {
+            background: var(--bg-glass);
+            border-radius: 20px;
+            padding: 25px;
+            margin: 0 20px 25px 20px;
+            box-shadow: 9px 9px 16px var(--shadow-dark), -9px -9px 16px var(--shadow-light);
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        /* --- PERFIL --- */
+        .profile-header { text-align: center; padding: 20px; }
+        .profile-image {
+            width: 160px; height: 160px; border-radius: 50%; object-fit: cover;
+            border: 5px solid rgba(224, 229, 236, 0.5);
+            box-shadow: 8px 8px 16px var(--shadow-dark), -8px -8px 16px var(--shadow-light);
+            margin-bottom: 15px; background-color: white;
+        }
+        h1 { font-size: 1.8rem; font-weight: 700; color: var(--text-main); margin-bottom: 5px; }
+        .subtitle { color: var(--primary); font-weight: 600; margin-bottom: 15px; font-size: 1.1rem; }
+        .description { font-size: 0.95rem; color: var(--text-secondary); line-height: 1.5; padding: 0 10px; }
+
+        /* --- BOTONES --- */
+        .neu-btn {
+            display: flex; align-items: center; justify-content: center; gap: 10px;
+            background: rgba(224, 229, 236, 0.6);
+            border-radius: 12px; padding: 15px 20px;
+            color: var(--text-main);
+            font-size: 1rem;         
+            text-decoration: none; font-weight: 600;
+            margin-bottom: 15px; border: none;
+            box-shadow: 6px 6px 10px var(--shadow-dark), -6px -6px 10px var(--shadow-light);
+            transition: all 0.2s ease; width: 100%; cursor: pointer;
+        }
+        .neu-btn:active, .neu-btn:hover {
+            transform: translateY(2px);
+            box-shadow: inset 4px 4px 8px var(--shadow-dark), inset -4px -4px 8px var(--shadow-light);
+            background: rgba(224, 229, 236, 0.9);
+        }
+        .neu-btn.primary { border: 1px solid rgba(124,155,227,0.2); font-weight: 700; }
+        .neu-btn i { color: var(--primary); font-size: 1.2rem; }
+
+        /* --- PAGO --- */
+        .payment-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .payment-btn { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px 10px; height: 120px; }
+        .payment-btn i { font-size: 2rem; margin-bottom: 10px; }
+        .payment-btn span { font-size: 0.9rem; font-weight: 600; }
+        .pichincha-icon { color: #FFDD00 !important; text-shadow: 1px 1px 2px rgba(0,0,0,0.2); }
+        .paypal-icon { color: #00457C !important; }
+
+        /* --- MODAL --- */
+        .modal-overlay {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(8px);
+            z-index: 9999; align-items: center; justify-content: center; padding: 20px;
+            animation: fadeIn 0.3s ease;
+        }
+        .modal-content {
+            background: #e0e5ec; width: 100%; max-width: 400px;
+            border-radius: 20px; padding: 25px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            position: relative; text-align: center;
+            border: 1px solid rgba(255,255,255,0.4);
+        }
+        .close-modal { position: absolute; top: 15px; right: 15px; background: none; border: none; font-size: 1.5rem; color: var(--text-secondary); cursor: pointer; }
+        .bank-logo-title { color: #2c3e50; font-weight: 800; font-size: 1.3rem; margin-bottom: 20px; display: flex; align-items: center; justify-content: center; gap: 10px; }
+        .bank-logo-title i { color: #FFDD00; text-shadow: 1px 1px 1px rgba(0,0,0,0.3); font-size: 1.5rem; }
+
+        .data-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; text-align: left; padding-bottom: 10px; border-bottom: 1px solid rgba(0,0,0,0.05); }
+        .data-info label { display: block; font-size: 0.75rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.5px; }
+        .data-info span { font-size: 0.95rem; font-weight: 700; color: var(--text-main); display: block; }
+        
+        .copy-btn {
+            background: rgba(224, 229, 236, 0.6); border: none; padding: 8px 15px; border-radius: 8px;
+            font-size: 0.8rem; font-weight: 600; color: var(--primary);
+            box-shadow: 3px 3px 6px var(--shadow-dark), -3px -3px 6px var(--shadow-light);
+            cursor: pointer; transition: all 0.2s;
+        }
+        .copy-btn:active { box-shadow: inset 2px 2px 5px var(--shadow-dark), inset -2px -2px 5px var(--shadow-light); }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        /* --- SERVICIOS & OTROS --- */
+        .service-block {
+            background: rgba(224, 229, 236, 0.6); border-radius: 12px; padding: 15px 20px;
+            margin-bottom: 15px; box-shadow: 6px 6px 10px var(--shadow-dark), -6px -6px 10px var(--shadow-light);
+            text-align: center;
+        }
+        .service-block i { font-size: 1.5rem; color: var(--primary); margin-bottom: 5px; display: block; }
+        .service-block h3 { font-size: 1rem; font-weight: 600; margin-bottom: 3px; color: var(--text-main); }
+        .service-block p { font-size: 0.85rem; color: var(--text-secondary); margin: 0; }
+        
+        .hours-row { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid rgba(0,0,0,0.05); font-size: 0.9rem; }
+        .hours-row:last-child { border-bottom: none; }
+        .day-name { font-weight: 600; color: var(--text-main); }
+        .day-time { color: var(--text-secondary); }
+
+        .qr-container {
+            display: flex; justify-content: center; align-items: center;
+            background: white; padding: 15px; border-radius: 15px;
+            width: 200px; height: 200px; margin: 0 auto;
+            box-shadow: inset 4px 4px 8px rgba(163, 177, 198, 0.4), inset -4px -4px 8px rgba(255, 255, 255, 0.8);
+            max-width: 100%;
+        }
+        .qr-container img { width: 100%; height: 100%; object-fit: contain; }
+
+        .section-title {
+            text-align: center; font-size: 1.1rem; font-weight: 700; color: var(--text-main);
+            margin: 35px 0 20px; text-transform: uppercase; letter-spacing: 1.5px;
+            text-shadow: 1px 1px 0 rgba(255,255,255,0.5);
+        }
+
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; margin-bottom: 8px; font-size: 0.9rem; font-weight: 600; }
+        .form-input {
+            width: 100%; padding: 15px; border-radius: 12px; border: none;
+            background: rgba(224, 229, 236, 0.5);
+            box-shadow: inset 4px 4px 8px var(--shadow-dark), inset -4px -4px 8px var(--shadow-light);
+            outline: none; color: var(--text-main); font-family: inherit;
+        }
+        .form-input:focus { box-shadow: inset 6px 6px 12px var(--shadow-dark), inset -6px -6px 12px var(--shadow-light); background: rgba(224, 229, 236, 0.8); }
+
+        .map-container {
+            border-radius: 15px; overflow: hidden; padding: 5px;
+            background: rgba(224, 229, 236, 0.5);
+            box-shadow: inset 4px 4px 8px var(--shadow-dark), inset -4px -4px 8px var(--shadow-light);
+        }
+        .map-container iframe { width: 100%; height: 220px; border: none; border-radius: 10px; filter: grayscale(20%); }
+        
+        .price-tag { font-size: 1.2rem; color: var(--primary); font-weight: 700; }
+    </style>
+</head>
+<body>
+    <div class="overlay-wrapper">
+        <div class="main-container">
+            
+            <div class="neu-card profile-header">
+                <img src="./dr-alex-reyes.png" alt="Dr. Alex Reyes" class="profile-image">
+                
+                <h1>Dr. Alex Reyes</h1>
+                <p class="subtitle">Medicina Integrativa & Forense</p>
+                <p class="description">Médico certificado con experiencia en bienestar integral. Ayudo a pacientes a recuperar su salud con un enfoque humano y científico.</p>
+            </div>
+
+            <div class="section-title">Contacto</div>
+            <div class="neu-card">
+                
+                <button onclick="downloadVCard()" class="neu-btn primary">
+                    <i class="fas fa-address-card"></i> <span>Guardar</span>
+                </button>
+
+                <a href="https://wa.me/593986125952" class="neu-btn">
+                    <i class="fab fa-whatsapp"></i> <span>WhatsApp</span>
+                </a>
+
+                <a href="https://www.doctoralexreyes.com" target="_blank" class="neu-btn">
+                    <i class="fas fa-globe"></i> <span>Página Web</span>
+                </a>
+
+                <a href="tel:+593986125952" class="neu-btn">
+                    <i class="fas fa-phone"></i> <span>Llamar Ahora</span>
+                </a>
+
+            </div>
+
+            <div class="section-title">Escanea mi Contacto</div>
+            <div class="neu-card" style="text-align: center;">
+                <div class="qr-container">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://www.doctoralexreyes.com" alt="Código QR">
+                </div>
+                <p style="margin-top: 15px; font-size: 0.85rem; color: var(--text-secondary);">Escanea para ir a mi sitio web</p>
+            </div>
+
+            <div class="section-title">Sígueme</div>
+            <div class="neu-card" style="display: flex; justify-content: center; gap: 15px;">
+                <a href="https://www.facebook.com/share/1DTwPFiQ5Y/" target="_blank" class="neu-btn" style="width: 50px; padding: 0; border-radius: 50%; height: 50px;">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                
+                <a href="#" class="neu-btn" style="width: 50px; padding: 0; border-radius: 50%; height: 50px;">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                
+                <a href="#" class="neu-btn" style="width: 50px; padding: 0; border-radius: 50%; height: 50px;">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+
+                <a href="#" class="neu-btn" style="width: 50px; padding: 0; border-radius: 50%; height: 50px;">
+                    <i class="fab fa-tiktok"></i>
+                </a>
+            </div>
+
+            <div class="section-title">Mis Servicios</div>
+            <div class="neu-card">
+                <div class="service-block">
+                    <i class="fas fa-user-md"></i>
+                    <h3>Consulta General</h3>
+                    <p>Diagnóstico completo y evaluación</p>
+                </div>
+
+                <div class="service-block">
+                    <i class="fas fa-heartbeat"></i>
+                    <h3>Cardiología</h3>
+                    <p>Control preventivo cardiovascular</p>
+                </div>
+
+                <div class="service-block">
+                    <i class="fas fa-notes-medical"></i>
+                    <h3>Certificados Médicos</h3>
+                    <p>Para salud, trabajo y conducción</p>
+                </div>
+            </div>
+
+            <div class="section-title">Planes y Productos</div>
+            <div class="neu-card">
+                <div style="border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 15px; margin-bottom: 15px;">
+                    <div style="display:flex; justify-content:space-between; align-items:center;">
+                        <h3 style="font-size:1rem;">Consulta</h3>
+                        <span class="price-tag">$45.00</span>
+                    </div>
+                    <a href="https://wa.me/593986125952?text=Hola%20Dr.%20Alex,%20quiero%20agendar%20una%20Consulta" class="neu-btn" style="margin:0; padding: 10px; margin-top:10px; text-decoration:none;">Solicitar</a>
+                </div>
+
+                <div style="border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 15px; margin-bottom: 15px;">
+                    <div style="display:flex; justify-content:space-between; align-items:center;">
+                        <h3 style="font-size:1rem;">Neuro-Audio</h3>
+                        <span class="price-tag">$19.99</span>
+                    </div>
+                    <a href="https://wa.me/593986125952?text=Hola%20Dr.%20Alex,%20me%20interesa%20el%20Neuro-Audio" class="neu-btn" style="margin:0; padding: 10px; margin-top:10px; text-decoration:none;">Comprar</a>
+                </div>
+
+                <div>
+                    <div style="display:flex; justify-content:space-between; align-items:center;">
+                        <h3 style="font-size:1rem;">Botiquín PDF</h3>
+                        <span class="price-tag">$9.99</span>
+                    </div>
+                    <a href="https://wa.me/593986125952?text=Hola%20Dr.%20Alex,%20quiero%20comprar%20el%20Botiquín%20PDF" class="neu-btn" style="margin:0; padding: 10px; margin-top:10px; text-decoration:none;">Comprar</a>
+                </div>
+            </div>
+
+            <div class="section-title">Formas de Pago</div>
+            <div class="neu-card">
+                <div class="payment-grid">
+                    <div class="neu-btn payment-btn" onclick="openBankModal()">
+                        <i class="fas fa-university pichincha-icon"></i>
+                        <span>Banco Pichincha</span>
+                    </div>
+                    
+                    <a href="https://paypal.me/AlexReyes888" target="_blank" class="neu-btn payment-btn" style="margin-bottom: 0; text-decoration: none;">
+                        <i class="fab fa-paypal paypal-icon"></i>
+                        <span>PayPal</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="section-title">Agenda tu Cita</div>
+            <div class="neu-card">
+                <form action="https://formspree.io/f/xgoweoqp" method="POST">
+                    <div class="form-group">
+                        <label>Nombre</label>
+                        <input type="text" name="nombre" class="form-input" required placeholder="Tu nombre">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" name="email" class="form-input" required placeholder="tu@email.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Teléfono</label>
+                        <input type="tel" name="telefono" class="form-input" required placeholder="Tu celular">
+                    </div>
+                    <div class="form-group">
+                        <label>Mensaje</label>
+                        <textarea name="mensaje" class="form-input" rows="3" placeholder="¿En qué puedo ayudarte?"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="neu-btn primary">
+                        <i class="fas fa-paper-plane"></i> Enviar
+                    </button>
+                </form>
+            </div>
+
+            <div class="section-title">Horarios</div>
+            <div class="neu-card">
+                <div class="hours-row" style="justify-content: center; text-align: center;">
+                    <span class="day-name" style="font-size: 1.1rem; color: var(--primary);">Atención Previa Cita</span>
+                </div>
+                <div class="hours-row" style="justify-content: center; text-align: center; border-bottom: none;">
+                    <span class="day-time">Coordina tu hora por WhatsApp</span>
+                </div>
+            </div>
+
+            <div class="section-title">Encuéntrame</div>
+            <div class="neu-card">
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.7496464220258!2d-78.12059822628056!3d0.3361689639979617!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e2a3d2f27f78457%3A0x5c09841bd146f8ee!2sUnidad%20M%C3%A9dica%20Integral%20-Consultorio%20m%C3%A9dico!5e0!3m2!1ses-419!2sec!4v1767723673104!5m2!1ses-419!2sec" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                <a href="https://maps.app.goo.gl/36x7R9NByqBMnpmF7" target="_blank" class="neu-btn" style="margin-top: 15px;">
+                    <i class="fas fa-directions"></i> Cómo llegar
+                </a>
+            </div>
+
+            <div style="text-align: center; font-size: 0.8rem; color: var(--text-secondary); padding: 20px;">
+                <p>© 2025 Dr. Alex Reyes. Todos los derechos reservados.</p>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="bankModal" class="modal-overlay" onclick="closeBankModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <button class="close-modal" onclick="closeBankModal()">×</button>
+            
+            <div class="bank-logo-title">
+                <i class="fas fa-university" style="color: #FFDD00;"></i> Banco Pichincha
+            </div>
+            
+            <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 20px;">
+                Realizar transferencia a la siguiente cuenta:
+            </p>
+
+            <div class="data-row">
+                <div class="data-info">
+                    <label>Titular</label>
+                    <span>ALEX REYES LÓPEZ</span>
+                </div>
+                <button class="copy-btn" onclick="copyText('ALEX REYES LÓPEZ', this)">
+                    Copiar
+                </button>
+            </div>
+
+            <div class="data-row">
+                <div class="data-info">
+                    <label>Número de Cuenta</label>
+                    <span>4303172100</span>
+                </div>
+                <button class="copy-btn" onclick="copyText('4303172100', this)">
+                    Copiar
+                </button>
+            </div>
+
+            <div class="data-row">
+                <div class="data-info">
+                    <label>Tipo de Cuenta</label>
+                    <span>AHORROS</span>
+                </div>
+                <button class="copy-btn" onclick="copyText('AHORROS', this)">
+                    Copiar
+                </button>
+            </div>
+
+            <div class="data-row" style="border-bottom: none;">
+                <div class="data-info">
+                    <label>No. Identificación</label>
+                    <span>1002180568</span>
+                </div>
+                <button class="copy-btn" onclick="copyText('1002180568', this)">
+                    Copiar
+                </button>
+            </div>
+
+            <div style="margin-top: 10px;">
+                <button class="neu-btn primary" onclick="closeBankModal()">Cerrar</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const doctorData = {
+            nombre: "Dr. Alex Reyes",
+            telefono: "593986125952", 
+            email: "contacto@doctoralexreyes.com",
+            web: "www.doctoralexreyes.com"
+        };
+
+        function openBankModal() {
+            document.getElementById('bankModal').style.display = 'flex';
+        }
+
+        function closeBankModal(event) {
+            if (event && event.target !== document.getElementById('bankModal')) return;
+            document.getElementById('bankModal').style.display = 'none';
+        }
+
+        function copyText(text, btnElement) {
+            navigator.clipboard.writeText(text).then(() => {
+                const originalText = btnElement.innerText;
+                btnElement.innerText = "¡Copiado!";
+                btnElement.style.color = "#27ae60"; 
+                
+                setTimeout(() => {
+                    btnElement.innerText = originalText;
+                    btnElement.style.color = "";
+                }, 2000);
+            }).catch(err => {
+                console.error("Error al copiar:", err);
+                alert("No se pudo copiar el texto. Puede deberse a permisos del navegador.");
+            });
+        }
+
+        function downloadVCard() {
+            const vcard = `BEGIN:VCARD
+VERSION:3.0
+FN:${doctorData.nombre}
+TEL;TYPE=CELL:+${doctorData.telefono}
+EMAIL:${doctorData.email}
+URL:${doctorData.web}
+END:VCARD`;
+            
+            const blob = new Blob([vcard], { type: 'text/vcard' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'contacto-doctor.vcf';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        }
+    </script>
+</body>
+</html>
