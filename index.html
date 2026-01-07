@@ -38,34 +38,35 @@
             color: var(--text-main);
             min-height: 100vh;
             line-height: 1.6;
+            background-color: transparent; /* Importante para ver el fondo */
         }
 
-        /* --- FONDO IGUALADO AL DE LA PÁGINA WEB --- */
+        /* --- FONDO IGUALADO A LA WEB (Detallado y Nítido) --- */
         body::before {
             content: "";
             position: fixed; 
             top: 0; left: 0; width: 100%; height: 100%;
             z-index: -1;
             
-            /* Mismo código de fondo que index1.html */
+            /* Misma configuración que index.html para consistencia total */
             background-image: 
-                linear-gradient(rgba(224, 229, 236, 0.85), rgba(224, 229, 236, 0.7)),
+                linear-gradient(rgba(224, 229, 236, 0.7), rgba(224, 229, 236, 0.7)),
                 url('./fondo-landing.jpg'); 
             
             background-size: cover;
             background-position: center;
-            will-change: transform;
+            opacity: 1;
             pointer-events: none;
+            will-change: transform; /* Anti-lag */
         }
 
         .overlay-wrapper {
-            /* Hacemos el wrapper un poco más transparente para que se note el fondo */
-            background-color: rgba(224, 229, 236, 0.6); 
+            /* TRANSPARENTE: Para que se vea la foto de fondo detallada */
+            background-color: transparent; 
             min-height: 100vh;
             width: 100%;
             padding-bottom: 40px;
-            backdrop-filter: blur(3px);
-            -webkit-backdrop-filter: blur(3px);
+            /* Eliminamos backdrop-filter para máxima nitidez del fondo */
             overflow-x: hidden;
         }
 
@@ -202,6 +203,7 @@
         
         .price-tag { font-size: 1.2rem; color: var(--primary); font-weight: 700; }
         
+        /* ESTILO PARA MENSAJE DE ÉXITO */
         #form-status { margin-top: 15px; text-align: center; font-weight: 600; font-size: 0.9rem; display: none; }
         .status-success { color: #27ae60; }
         .status-error { color: #e74c3c; }
@@ -372,7 +374,7 @@
             <div class="section-title">Encuéntrame</div>
             <div class="neu-card">
                 <div class="map-container">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.7496464220258!2d-78.12059822628056!3d0.3361689639979617!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e2a3d2f27f78457%3A0x5c09841bd146f8ee!2sUnidad%20M%C3%A9dica%20Integral%20-Consultorio%20m%C3%A9dico!5e0!3m2!1ses-419!2sec!4v1767723673104!5m2!1ses-419!2sec" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127643.76234661788!2d-78.1307084!3d0.354959!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e2a3d0789231c45%3A0x5234783004615c60!2sIbarra!5e0!3m2!1ses!2sec!4v1709850000000!5m2!1ses!2sec" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
                 <a href="https://maps.app.goo.gl/36x7R9NByqBMnpmF7" target="_blank" class="neu-btn" style="margin-top: 15px;">
                     <i class="fas fa-directions"></i> Cómo llegar
