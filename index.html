@@ -40,25 +40,32 @@
             line-height: 1.6;
         }
 
-        /* FONDO OPTIMIZADO */
+        /* --- FONDO IGUALADO AL DE LA PÁGINA WEB --- */
         body::before {
             content: "";
             position: fixed; 
             top: 0; left: 0; width: 100%; height: 100%;
             z-index: -1;
-            background-image: url('./fondo-web.jpg');
+            
+            /* Mismo código de fondo que index1.html */
+            background-image: 
+                linear-gradient(rgba(224, 229, 236, 0.85), rgba(224, 229, 236, 0.7)),
+                url('./fondo-landing.jpg'); 
+            
             background-size: cover;
             background-position: center;
             will-change: transform;
+            pointer-events: none;
         }
 
         .overlay-wrapper {
-            background-color: rgba(224, 229, 236, 0.85);
+            /* Hacemos el wrapper un poco más transparente para que se note el fondo */
+            background-color: rgba(224, 229, 236, 0.6); 
             min-height: 100vh;
             width: 100%;
             padding-bottom: 40px;
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
+            backdrop-filter: blur(3px);
+            -webkit-backdrop-filter: blur(3px);
             overflow-x: hidden;
         }
 
@@ -195,7 +202,6 @@
         
         .price-tag { font-size: 1.2rem; color: var(--primary); font-weight: 700; }
         
-        /* ESTILO PARA MENSAJE DE ÉXITO */
         #form-status { margin-top: 15px; text-align: center; font-weight: 600; font-size: 0.9rem; display: none; }
         .status-success { color: #27ae60; }
         .status-error { color: #e74c3c; }
@@ -206,7 +212,7 @@
         <div class="main-container">
             
             <div class="neu-card profile-header">
-                <img src="./dr-alex-reyes.png" alt="Dr. Alex Reyes" class="profile-image">
+                <img src="./dr-alex-reyes.jpg" alt="Dr. Alex Reyes" class="profile-image">
                 
                 <h1>Dr. Alex Reyes</h1>
                 <p class="subtitle">Medicina Integrativa & Forense</p>
@@ -446,7 +452,6 @@
             web: "www.doctoralexreyes.com"
         };
 
-        // --- MANEJO DE FORMSPREE CON AJAX (SIN REDIRECCIÓN) ---
         const form = document.getElementById("contact-form");
         
         async function handleSubmit(event) {
@@ -487,7 +492,6 @@
         
         form.addEventListener("submit", handleSubmit);
 
-        // --- FUNCIONES RESTANTES ---
         function openBankModal() {
             document.getElementById('bankModal').style.display = 'flex';
         }
